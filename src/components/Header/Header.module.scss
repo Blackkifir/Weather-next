@@ -1,0 +1,47 @@
+.navigation {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+img {
+    margin: 20px;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .leftBlock {
+        width: 400px;
+    
+        h1 {
+            font-size: 80px;
+        }
+    
+        p {
+            font-size: 20px;
+            float: right;
+        }
+    }
+
+    h1, p, li {
+        cursor: pointer;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        align-items: center;
+        width: 700px;
+
+        li {
+            text-align: center;
+            font-size: 35px;
+        }
+    }
+}
+

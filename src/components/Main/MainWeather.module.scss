@@ -1,0 +1,65 @@
+.knock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 50px;
+}
+
+.switch {
+  width: 92px;
+  height: 30px;
+  background: linear-gradient(to right, rgba(24, 172, 24, 0.6), #3dbf92);
+  border-radius: 50px;
+  margin: 0px 10px 0px 10px;
+  position: relative;
+
+  .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background-color: #151515;
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    top: 2px;
+    bottom: 2px;
+  }
+}
+
+.degrees {
+    font-size: 25px;
+}
+
+.search_flex {
+  display: flex;
+  justify-content: center;
+
+  form {
+    position: relative;
+    width: 700px; 
+
+    .search_img {
+      position: absolute;
+      margin: 0;
+      top: 10px;
+      left: 30px;
+      bottom: 0px;
+      cursor: pointer;
+    }
+
+    input {
+      background-color: #FFFFFF;
+      border-radius: 25px;
+      width: 100%;
+      height: 60px;
+      padding-left: 100px;
+      padding-right: 10px;
+      font-size: 25px;
+      color: #695D5D;
+    }
+  }
+}
+
+
