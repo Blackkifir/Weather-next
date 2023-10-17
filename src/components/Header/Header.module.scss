@@ -1,6 +1,7 @@
+@import '../../scss/variables.module';
+
 .navigation {
-  max-width: 1440px;
-  margin: 0 auto;
+  @include widthContainer;
   padding: 0 15px;
 }
 
@@ -9,9 +10,7 @@ img {
 }
 
 .flexBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include headerFlex;
     width: 100%;
 
     .leftBlock {
@@ -22,8 +21,8 @@ img {
         }
     
         p {
-            font-size: 20px;
             float: right;
+            font-size: 20px;
         }
     }
 
@@ -32,15 +31,13 @@ img {
     }
 
     ul {
-        display: flex;
+        @include headerFlex;
         list-style: none;
-        justify-content: space-between;
-        align-items: center;
         width: 700px;
 
         li {
-            text-align: center;
             font-size: 35px;
+            text-align: center;
         }
     }
 }

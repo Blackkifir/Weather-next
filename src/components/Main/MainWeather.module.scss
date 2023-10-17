@@ -1,40 +1,41 @@
-.knock {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 15px;
-  margin-bottom: 50px;
-}
+@import '../../scss/variables.module';
 
-.switch {
+.knock {
+  @include knock;
+  margin-bottom: 50px;
+  padding: 0 15px;
+
+&_switch {
+  position: relative;
+  margin: 0px 10px 0px 10px;
+  border-radius: 50px;
+  background: linear-gradient(to right, rgba(24, 172, 24, 0.6), #3dbf92);
   width: 92px;
   height: 30px;
-  background: linear-gradient(to right, rgba(24, 172, 24, 0.6), #3dbf92);
-  border-radius: 50px;
-  margin: 0px 10px 0px 10px;
-  position: relative;
+}
 
-  .circle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: none;
-    background-color: #151515;
-    cursor: pointer;
+&_circle {
     position: absolute;
     left: 0px;
     top: 2px;
     bottom: 2px;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #151515;
+    cursor: pointer;
   }
-}
 
-.degrees {
+  &_degrees {
     font-size: 25px;
+ }
 }
 
-.search_flex {
+.search_flexBox {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 
   form {
     position: relative;
@@ -42,24 +43,95 @@
 
     .search_img {
       position: absolute;
-      margin: 0;
       top: 10px;
       left: 30px;
       bottom: 0px;
+      margin: 0;
       cursor: pointer;
     }
 
     input {
-      background-color: #FFFFFF;
       border-radius: 25px;
+      background-color: #FFFFFF;
       width: 100%;
       height: 60px;
       padding-left: 100px;
       padding-right: 10px;
       font-size: 25px;
       color: #695D5D;
+
+      &:hover {
+        box-shadow: 0px 8px 8px rgb(107, 105, 105);
+        transition: all .3s;
+      }
+
+      &::after {
+        width: 20px;
+        height: 20px;
+        background-color: 20px;
+      }
     }
   }
 }
 
+.container_slider {
+  @include flexBoxing;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-bottom: 90px;
+
+  .slider {
+    border-radius: 25px;
+    width: 825px;
+    height: 425px;
+    background-image: linear-gradient(to bottom right, rgba(173, 54, 203, 1) 30%, rgba(51, 51, 51, 1) 70%);
+
+    &_text {
+      margin: 50px 0 0 30px;
+      font-size: 35px;
+    }
+
+    &_date {
+      margin-left: 30px;
+      font-size: 20px;
+    }
+
+    &_block_list {
+      @include flexBoxingThird;
+      margin-top: 80px;
+
+      .slider_list {
+        list-style: none;
+        
+        p {
+          font-size: 25px;
+        }
+
+        b {
+          font-size: 20px;
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0px 8px 8px rgb(107, 105, 105);;
+      transition: all .3s;
+    }
+  }
+
+  .slider_second {
+    @include flexBoxing;
+    margin-top: 90px;
+
+    &_block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    &_text {
+      font-size: 70px;
+    }
+  }
+}
 

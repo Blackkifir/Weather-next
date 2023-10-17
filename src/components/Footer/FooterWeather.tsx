@@ -1,17 +1,18 @@
 import Image from 'next/image';
+import styles from './FooterWeather.module.scss';
 import img from '../../img/rain-clouds.svg';
 
 export default function Footer() {
   return (
     <footer>
-      <div className="footer_container">
-        <div className="footer_flex">
-          <div className="footer_block-1">
-            <span className="footer_text-1">23:00 pm</span>
+      <div className={styles.footer_container}>
+        <div className={styles.flexBox}>
+          <div className={styles.flexBox_block_1}>
+            <span className={styles.flexBox_text_1}>23:00 pm</span>
+            <Image src={...img} alt="not-found" className={styles.image_clouds} />
           </div>
-          <Image src={...img} alt="not-found" />
-          <div className="footer_block-2">
-            <span className="footer_text-2">29°</span>
+          <div className={styles.flexBox_block_2}>
+            <span className={styles.flexBox_text_2}>29°</span>
           </div>
         </div>
       </div>

@@ -1,0 +1,35 @@
+@mixin flexBoxing() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexBoxingSecond() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flexBoxingThird() {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin headerFlex() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin widthContainer() {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
+
+@mixin knock() {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
