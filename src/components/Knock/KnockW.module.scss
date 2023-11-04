@@ -1,0 +1,33 @@
+@import '../../scss/variables.module';
+
+.knock {
+    @include knock;
+    margin-bottom: 50px;
+    padding: 0 15px;
+  
+  &_switch {
+    position: relative;
+    margin: 0px 10px 0px 10px;
+    border-radius: 50px;
+    background: linear-gradient(to right, rgba(24, 172, 24, 0.6), #3dbf92);
+    width: 92px;
+    height: 30px;
+  }
+  
+  &_circle {
+      position: absolute;
+      left: 0px;
+      top: 2px;
+      bottom: 2px;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      background-color: #151515;
+      cursor: pointer;
+    }
+  
+    &_degrees {
+      font-size: 25px;
+   }
+  }

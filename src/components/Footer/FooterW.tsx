@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './FooterWeather.module.scss';
+import styles from './FooterW.module.scss';
 import img from '../../img/rain-clouds.svg';
 
 export default function Footer() {

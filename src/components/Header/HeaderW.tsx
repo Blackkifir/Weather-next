@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import logo from '../../img/weather-logo.svg';
-import styles from './Header.module.scss';
+import styles from './HeaderW.module.scss';
 
 export default function Header() {
   return (

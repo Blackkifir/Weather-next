@@ -11,13 +11,18 @@ body {
     color: #FFFFFF;
 }
 
-h1, h2, h3, h4, h5, h6,
-ul, li, ol,
-span, p, a,
-img {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+ol,
+span, 
+p, 
+a {
     margin: 0;
     padding: 0;
 }
-
-
-
