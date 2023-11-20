@@ -1,5 +1,5 @@
+/* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-named-as-default
 import weatherSlice from './slice/weatherSlice';
 
 const store = configureStore({

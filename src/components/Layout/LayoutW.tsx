@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Head from 'next/head';
 
+import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { fetchDataSlider } from '@/redux/slice/weatherSlice';
+import { fetchDataSlider, setInputValue } from '@/redux/slice/weatherSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
 
 import Search from '../Search/SearchW';
-import Slider from '../Slider/SliderW';
+import SliderW from '../SliderSlick/SliderSlick';
 import Knock from '../Knock/KnockW';
 import Loader from '../Loader/LoaderW';
 
@@ -15,22 +16,45 @@ import styles from './LayoutW.module.scss';
 
 export default function Main() {
   const dispatch: AppDispatch = useDispatch();
-  const { items, loading } = useAppSelector((state: RootState) => state.weatherSlice);
+  const {
+    items,
+    loading,
+    inputValue,
+    customError,
+  } = useAppSelector((state: RootState) => state.weatherSlice);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounceChangeInput = useCallback(
+    debounce((str: string) => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      dispatch(fetchDataSlider({
+        items,
+        loading,
+        customError,
+        inputValue: str,
+      }));
+    }, 3000),
+    [dispatch],
+  );
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(fetchDataSlider());
-  }, [dispatch]);
+    debounceChangeInput(inputValue);
+  }, [debounceChangeInput, inputValue]);
 
-  console.log(items, loading);
+  const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputValue(event.target.value));
+  };
   return (
     <div className={styles.main_container}>
       <Head>
         <title>Weather</title>
       </Head>
       <Knock />
-      <Search />
-      {loading ? <Loader /> : <Slider />}
+      <Search onChangeSearch={onChangeSearch} />
+      {loading ? <Loader />
+        : (
+          <SliderW />
+        )}
     </div>
   );
 }

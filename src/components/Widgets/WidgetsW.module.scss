@@ -1,0 +1,45 @@
+@import '../../scss/variables.module';
+
+.flexBox {
+    @include flexBoxing; 
+    position: relative;
+  
+    &_block_1 {
+      position: relative;
+      box-shadow: 0px -2px 8px rgb(14, 14, 14);
+      border-radius: 25px;
+      width: 120px;
+      height: 120px;
+      padding-top: 15px;
+      background-image: linear-gradient(to bottom, rgba(173, 54, 203, 1), #c1c0c0);
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+  
+      .image_clouds {
+        position: absolute;
+        z-index: 2;
+        top: 5px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  
+    &_block_2 {
+      position: absolute;
+      z-index: 1;
+      bottom: -15px;
+      box-shadow: 0px 8px 8px rgb(14, 14, 14);
+      border-radius: 25px;
+      width: 122px;
+      height: 70px;
+      padding-top: 35px;
+      background-image: linear-gradient(to top right, #2d2d2d 30%, #525252);
+      cursor: pointer;
+      font-size: 25px;
+      text-align: center;
+    }
+  }

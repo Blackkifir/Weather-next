@@ -1,20 +1,28 @@
-import Image from 'next/image';
+import React from 'react';
+// import { useAppSelector } from '@/redux/hooks/hooksW';
+// import { RootState } from '@/redux/store';
+// import Widgets from '../Widgets/WidgetsW';
 import styles from './FooterW.module.scss';
-import img from '../../img/rain-clouds.svg';
 
 export default function Footer() {
+  // const { items } = useAppSelector((state: RootState) => state.weatherSlice);
   return (
     <footer>
       <div className={styles.footer_container}>
-        <div className={styles.flexBox}>
-          <div className={styles.flexBox_block_1}>
-            <span className={styles.flexBox_text_1}>23:00 pm</span>
-            <Image src={...img} alt="not-found" className={styles.image_clouds} />
-          </div>
-          <div className={styles.flexBox_block_2}>
-            <span className={styles.flexBox_text_2}>29°</span>
-          </div>
-        </div>
+        {/* {items.map((obj) => {
+          if (obj && obj.widgets) {
+            return obj.widgets.map((widget) => (
+              <Widgets
+                key={widget.idWidgets}
+                idWidgets={widget.idWidgets}
+                time={widget.time}
+                temperature={widget.temperature}
+                imageClouds={widget.imageClouds}
+              />
+            ));
+          }
+          return null;
+        })} */}
       </div>
     </footer>
   );

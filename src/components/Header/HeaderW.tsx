@@ -5,7 +5,7 @@ import styles from './HeaderW.module.scss';
 export default function Header() {
   return (
     <header>
-      <Image src={...logo} width={100} height={100} alt="not-found" />
+      <Image className={styles.logo} src={...logo} width={100} height={100} alt="not-found" />
       <nav className={styles.navigation}>
         <div className={styles.flexBox}>
           <div className={styles.leftBlock}>
