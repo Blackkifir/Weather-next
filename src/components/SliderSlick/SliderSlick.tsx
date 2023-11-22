@@ -47,7 +47,14 @@ export default function SliderSlick() {
         />
       </div>
       <div>
-        <SliderAdditions />
+        <SliderAdditions
+          tz_id={items.location.tz_id}
+          last_updated={items.current.last_updated}
+          precip_mm={items.current.precip_mm}
+          feelslike_c={items.current.feelslike_c}
+          uv={items.current.uv}
+          gust_mph={items.current.gust_mph}
+        />
       </div>
     </Slider>
   );
