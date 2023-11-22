@@ -8,6 +8,7 @@ import SliderMain from '../SliderMain/SliderMainW';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import SliderAdditions from '../SliderAdditions/SliderAdditionW';
 
 export default function SliderSlick() {
   const { items } = useAppSelector((state: RootState) => state.weatherSlice);
@@ -46,10 +47,7 @@ export default function SliderSlick() {
         />
       </div>
       <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
+        <SliderAdditions />
       </div>
     </Slider>
   );

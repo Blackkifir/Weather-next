@@ -33,3 +33,21 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+@mixin gridCenter() {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+}
+
+@mixin textSliderAdditions() {
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+@mixin itemSliderAdditions() {
+    font-size: 30px;
+    line-height: 25px;
+    font-weight: 500;
+}

@@ -1,15 +1,13 @@
-
 @import '../../scss/variables.module';
 
 .parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexBoxing();
   margin-bottom: 84px;
 }
 
 .slider {
   width: 820px;
+  height: 450px;
   background: linear-gradient(94deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.2));
   border-radius: 20px;
   padding: 40px 30px 40px 30px;
@@ -21,9 +19,7 @@
 }
 
 .blockTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexBoxingSecond();
   margin-bottom: 80px;
 
   &__title {

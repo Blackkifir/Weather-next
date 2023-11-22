@@ -4,7 +4,6 @@ import { IPropsSliderProperties } from '@/components/SliderMain/interfaces/IProp
 
 import placeImg from '../../img/longLine.svg';
 import temperatureImg from '../../img/temperature.svg';
-// import cloudsImg from '../../img/clouds.png';
 
 import styles from './SliderMainW.module.scss';
 
