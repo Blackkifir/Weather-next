@@ -29,7 +29,7 @@
         }
     }
 
-    h1, p, li {
+    h1, p, button {
         cursor: pointer;
     }
 
@@ -37,13 +37,24 @@
         @include headerFlex;
         list-style: none;
         width: 700px;
+    
+      button {
+        border: none;
+        background: none;
+        padding: 5px;
+        font-size: 35px;
+        font-weight: 500;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #FFFFFF;
+      }
+    }
 
-        li {
-            font-size: 35px;
-            font-weight: 500;
-            text-align: center;
-            letter-spacing: 2px;
-        }
+    .active {
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 5px rgb(107, 105, 105);
+        transform: rotateY(10deg) scale(1.1);
+        transition: all .3s;
     }
 }
 

@@ -21,6 +21,7 @@ export default function Main() {
     loading,
     inputValue,
     customError,
+    activeIndex,
   } = useAppSelector((state: RootState) => state.weatherSlice);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,6 +33,7 @@ export default function Main() {
         loading,
         customError,
         inputValue: str,
+        activeIndex,
       }));
     }, 3000),
     [dispatch],

@@ -29,6 +29,7 @@ const initialState: IPropsItemData = {
   loading: true,
   customError: null,
   inputValue: '',
+  activeIndex: 1,
 };
 
 export const fetchDataSlider = createAsyncThunk(
@@ -65,6 +66,9 @@ export const weatherSlice = createSlice({
     setInputValue(state, action: PayloadAction<string>) {
       state.inputValue = action.payload;
     },
+    setActiveIndex(state, action: PayloadAction<number>) {
+      state.activeIndex = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -88,5 +92,6 @@ export const {
   setItems,
   setError,
   setInputValue,
+  setActiveIndex,
 } = weatherSlice.actions;
 export default weatherSlice.reducer;

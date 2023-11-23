@@ -5,4 +5,5 @@ export interface IPropsItemData {
   loading: boolean,
   customError: string | null | undefined;
   inputValue: string,
+  activeIndex: number,
 }
