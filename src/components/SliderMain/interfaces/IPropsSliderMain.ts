@@ -2,7 +2,7 @@ export interface IPropsSliderMain {
   location: {
     name?: string,
     region?: string,
-    localtime?: string
+    localtime?: string,
     country?: string,
     tz_id?: string,
   },

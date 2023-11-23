@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import temperatureAdditions from '../../img/temperatureAdditions.svg';
-import precipitationImg from '../../img/precipitation.svg';
-import windImg from '../../img/wind.svg';
-import uvIndex from '../../img/uvIndex.svg';
+import temperatureAdditions from '../../icons/temperatureAdditions.svg';
+import precipitationImg from '../../icons/precipitation.svg';
+import windImg from '../../icons/wind.svg';
+import uvIndex from '../../icons/uvIndex.svg';
 
 import styles from './SliderAdditionsW.module.scss';
 import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';

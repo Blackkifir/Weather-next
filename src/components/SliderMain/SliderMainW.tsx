@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 import { IPropsSliderProperties } from '@/components/SliderMain/interfaces/IPropsSliderMain';
 
-import placeImg from '../../img/longLine.svg';
-import temperatureImg from '../../img/temperature.svg';
+import placeImg from '../../icons/longLine.svg';
+import temperatureImg from '../../icons/temperature.svg';
 
 import styles from './SliderMainW.module.scss';
 

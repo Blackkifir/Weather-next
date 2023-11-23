@@ -4,7 +4,7 @@ import { IPropsChangeInput } from '@/redux/interfaces/IPropsFunc';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
 
-import searchImg from '../../img/search-location.svg';
+import searchImg from '../../icons/search-location.svg';
 
 import styles from './SearchW.module.scss';
 

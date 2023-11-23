@@ -4,14 +4,16 @@ import { setActiveIndex } from '@/redux/slice/weatherSlice';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
+import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';
 
-import logo from '../../img/weather-logo.svg';
+import logo from '../../icons/weather-logo.svg';
 
 import styles from './HeaderW.module.scss';
 
-export default function Header() {
+export default function Header({ localtime }: IPropsSliderProperties) {
   const dispatch = useDispatch();
   const { activeIndex } = useAppSelector((state: RootState) => state.weatherSlice);
+  const timeSliceStr = localtime ? `${localtime.slice(11, 16)}pm` : '';
 
   const onClickForecast = (activeNumber: number) => {
     dispatch(setActiveIndex(activeNumber));
@@ -24,7 +26,9 @@ export default function Header() {
         <div className={styles.flexBox}>
           <div className={styles.leftBlock}>
             <h1 className="header-title">WeatherMe</h1>
-            <p>21:00 pm</p>
+            <p>
+              {timeSliceStr}
+            </p>
           </div>
           <ul className="header-list">
             <li>
