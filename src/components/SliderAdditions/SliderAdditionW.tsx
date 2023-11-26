@@ -30,7 +30,6 @@ export default function SliderAdditions({
             <div className={styles.leftBlock__block}>
               <p className={styles.leftBlock__block__text}>
                 How it feels
-                <hr />
               </p>
               <p className={styles.leftBlock__block__item}>
                 <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
@@ -41,7 +40,6 @@ export default function SliderAdditions({
             <div className={styles.leftBlock__block}>
               <p className={styles.leftBlock__block__text}>
                 Wind speed
-                <hr />
               </p>
               <p className={styles.leftBlock__block__item}>
                 <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
@@ -54,7 +52,6 @@ export default function SliderAdditions({
             <div className={styles.rightBlock__block}>
               <p className={styles.rightBlock__block__text}>
                 Precipitation
-                <hr />
               </p>
               <p className={styles.rightBlock__block__item}>
                 <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
@@ -65,7 +62,6 @@ export default function SliderAdditions({
             <div className={styles.rightBlock__block}>
               <p className={styles.rightBlock__block__text}>
                 UV-index
-                <hr />
               </p>
               <p className={styles.rightBlock__block__item}>
                 <Image src={...uvIndex} width={25} height={25} alt="temperatureImg" />

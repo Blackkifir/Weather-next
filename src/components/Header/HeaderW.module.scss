@@ -1,12 +1,13 @@
 @import '../../scss/variables.module';
 
 .navigation {
-  @include widthContainer;
   padding: 0 15px;
 }
 
 .logo {
-    margin: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 0 0 50% 0%;
 }
 
 .flexBox {
@@ -52,7 +53,7 @@
 
     .active {
         border-radius: 10px;
-        box-shadow: 0px 0px 10px 5px rgb(107, 105, 105);
+        box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
         transform: rotateY(10deg) scale(1.1);
         transition: all .3s;
     }

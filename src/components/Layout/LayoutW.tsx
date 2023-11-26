@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
+import { fetchWidgetsData } from '@/redux/slice/widgetsSlice';
 import { fetchDataSlider, setInputValue } from '@/redux/slice/weatherSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
@@ -23,7 +24,6 @@ export default function Main() {
     customError,
     activeIndex,
   } = useAppSelector((state: RootState) => state.weatherSlice);
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
@@ -35,10 +35,19 @@ export default function Main() {
         inputValue: str,
         activeIndex,
       }));
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      dispatch(fetchWidgetsData(
+        {
+          items,
+          loading,
+          customError,
+          inputValue: str,
+          activeIndex,
+        },
+      ));
     }, 3000),
     [dispatch],
   );
-
   useEffect(() => {
     debounceChangeInput(inputValue);
   }, [debounceChangeInput, inputValue]);

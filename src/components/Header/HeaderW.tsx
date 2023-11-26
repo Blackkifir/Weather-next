@@ -6,8 +6,7 @@ import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
 import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';
 
-import logo from '../../icons/weather-logo.svg';
-
+import logo from '../../../public/logo.jpg';
 import styles from './HeaderW.module.scss';
 
 export default function Header({ localtime }: IPropsSliderProperties) {
@@ -21,11 +20,13 @@ export default function Header({ localtime }: IPropsSliderProperties) {
 
   return (
     <header>
-      <Image className={styles.logo} src={...logo} width={100} height={100} alt="not-found" />
+      <Image src={logo} className={styles.logo} alt="logoImg" />
       <nav className={styles.navigation}>
         <div className={styles.flexBox}>
           <div className={styles.leftBlock}>
-            <h1 className="header-title">WeatherMe</h1>
+            <h1 className="header-title">
+              WeatherMe
+            </h1>
             <p>
               {timeSliceStr}
             </p>

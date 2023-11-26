@@ -8,12 +8,12 @@
 .slider {
   width: 820px;
   height: 450px;
-  background: linear-gradient(94deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.2));
+  background: radial-gradient(ellipse, rgb(138, 43, 138), #0a0a42);
   border-radius: 20px;
   padding: 30px 30px 30px 30px;
 
   &:hover {
-    box-shadow: 0px 5px 5px rgb(107, 105, 105);
+    box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
     transition: all .3s;
   }
 }
@@ -52,12 +52,13 @@
       @include flexBoxingThird();
       width: 325px;
       height: 170px;
-      background: linear-gradient(94deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.2));
+      background: radial-gradient(ellipse, #2A1177, #0c043d);
       border-radius: 20px;
       transition: all .3s;
 
       &__text {
         @include textSliderAdditions();
+        text-decoration: underline;
       }
 
       &__item {
@@ -65,7 +66,7 @@
       }
 
       &:hover {
-        box-shadow: 0px 5px 5px rgb(107, 105, 105);
+        box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
         transform: rotateY(10deg) scale(1.1);
       }
     }
@@ -79,12 +80,13 @@
       @include flexBoxingThird();
       width: 350px;
       height: 170px;
-      background: linear-gradient(94deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.2));
+      background: radial-gradient(ellipse, #2A1177, #0c043d);
       border-radius: 20px;
       transition: all .3s;
       
       &__text {
         @include textSliderAdditions();
+        text-decoration: underline;
       }
 
       &__item {
@@ -92,7 +94,7 @@
       }
 
       &:hover {
-        box-shadow: 0px 5px 5px rgb(107, 105, 105);
+        box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
         transform: rotateY(10deg) scale(1.1);
       }
     }

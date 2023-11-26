@@ -7,7 +7,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #252323;
+    /* background-color: #08003C; */
+    background: radial-gradient(ellipse, #2A1177, #08003C);
     font-family: 'Montserrat', sans-serif;
     color: #FFFFFF;
     overflow-x: hidden;

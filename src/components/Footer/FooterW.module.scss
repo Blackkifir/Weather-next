@@ -1,9 +1,17 @@
 @import '../../scss/variables.module';
 
-.footer_container  {
-  @include widthContainer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px;
+.footer_container {
+  @include knock();
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0px 20px 0px 20px;
+  border: 1px solid black;
+  border-radius: 20px 20px 0px 0px;
+  gap: 32px;
+}
+
+.hiddenFooter {
+  display: hidden;
 }

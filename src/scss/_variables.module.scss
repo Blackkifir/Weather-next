@@ -18,15 +18,9 @@
 
 @mixin headerFlex() {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
-
-@mixin widthContainer() {
-    margin: 0 auto;
-    max-width: 1440px;
-}
-
 
 @mixin knock() {
     display: flex;
