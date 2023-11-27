@@ -13,6 +13,7 @@ export default function Footer() {
         {!loading
         && widgetsData.forecast.forecastday[0].hour.map((obj) => (
           <Widgets
+            key={obj.time}
             time={obj.time}
             temp_c={obj.temp_c}
             text={obj.condition.text}

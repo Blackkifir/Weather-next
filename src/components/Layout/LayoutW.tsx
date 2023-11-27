@@ -55,6 +55,7 @@ export default function Main() {
   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setInputValue(event.target.value));
   };
+
   return (
     <div className={styles.main_container}>
       <Head>
@@ -62,10 +63,7 @@ export default function Main() {
       </Head>
       <Knock />
       <Search onChangeSearch={onChangeSearch} />
-      {loading ? <Loader />
-        : (
-          <SliderW />
-        )}
+      {loading ? <Loader /> : <SliderW />}
     </div>
   );
 }

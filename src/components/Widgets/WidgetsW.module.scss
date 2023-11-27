@@ -3,8 +3,7 @@
 .flexBox {
     @include flexBoxing; 
     position: relative;
-    margin: 50px 0px 50px 0px;
-    
+    margin: 50px 0px 50px 0px;    
 
     &_block_1 {
       position: relative;
@@ -13,7 +12,7 @@
       width: 120px;
       height: 120px;
       padding-top: 15px;
-      background: radial-gradient(ellipse, #771164, #040449);
+      background: linear-gradient(to top left, rgba(11, 11, 11, 0.553) 30%, rgb(131, 40, 159));
       cursor: pointer;
       font-size: 20px;
       font-weight: 700;
@@ -43,6 +42,12 @@
       cursor: pointer;
       font-size: 25px;
       text-align: center;
+    }
+
+    &_desc {
+      margin-top: 20px;
+      font-size: 15px;
+      font-weight: 700;
     }
   }
 

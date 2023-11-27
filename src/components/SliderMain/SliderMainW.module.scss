@@ -8,12 +8,12 @@
 .slider {
   width: 820px;
   height: 450px;
-  background: radial-gradient(ellipse, #771164, #0a0a42);
+  background: linear-gradient(to top left, rgba(11, 11, 11, 0.553) 40%, rgb(131, 40, 159));
   border-radius: 20px;
   padding: 40px 30px 40px 30px;
 
   &:hover {
-    box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
+    box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.553);
     transition: all .3s;
   }
 }

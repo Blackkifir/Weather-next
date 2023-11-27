@@ -8,7 +8,7 @@
 .slider {
   width: 820px;
   height: 450px;
-  background: radial-gradient(ellipse, rgb(138, 43, 138), #0a0a42);
+  background: linear-gradient(to top right, rgba(11, 11, 11, 0.553) 50%, rgb(131, 40, 159));
   border-radius: 20px;
   padding: 30px 30px 30px 30px;
 
@@ -52,7 +52,7 @@
       @include flexBoxingThird();
       width: 325px;
       height: 170px;
-      background: radial-gradient(ellipse, #2A1177, #0c043d);
+      background: linear-gradient(to top left, rgba(11, 11, 11, 0.553), rgb(131, 40, 159));
       border-radius: 20px;
       transition: all .3s;
 
@@ -80,7 +80,7 @@
       @include flexBoxingThird();
       width: 350px;
       height: 170px;
-      background: radial-gradient(ellipse, #2A1177, #0c043d);
+      background: linear-gradient(to top left, rgba(11, 11, 11, 0.553), rgb(131, 40, 159));
       border-radius: 20px;
       transition: all .3s;
       

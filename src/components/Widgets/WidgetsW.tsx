@@ -5,6 +5,7 @@ import { IPropsWidgetsProperties } from './interfaces/IPropsWidgets';
 export default function Widgets({
   time,
   temp_c,
+  text,
   icon,
 }: IPropsWidgetsProperties) {
   if (!icon) {
@@ -28,6 +29,7 @@ export default function Widgets({
           {temp_c}
           °C
         </span>
+        <p className={styles.flexBox_desc}>{text}</p>
       </div>
     </div>
   );
