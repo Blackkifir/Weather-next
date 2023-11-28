@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './WidgetsW.module.scss';
+import styles from './WidgetsWeather.module.scss';
 import { IPropsWidgetsProperties } from './interfaces/IPropsWidgets';
 
 export default function Widgets({

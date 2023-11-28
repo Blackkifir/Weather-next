@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
 
-import SliderMain from '../SliderMain/SliderMainW';
+import SliderMain from '../SliderMain/SliderMain';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -38,8 +38,8 @@ export default function SliderSlick() {
           temp_f={items.current.temp_f}
           humidity={items.current.humidity}
           pressure_mb={items.current.pressure_mb}
-          wind_mph={items.current.wind_mph}
           wind_kph={items.current.wind_kph}
+          wind_mph={items.current.wind_mph}
           vis_km={items.current.vis_km}
           vis_miles={items.current.vis_miles}
           text={items.current.condition.text}

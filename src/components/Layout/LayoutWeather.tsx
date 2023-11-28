@@ -8,12 +8,12 @@ import { fetchDataSlider, setInputValue } from '@/redux/slice/weatherSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
 
-import Search from '../Search/SearchW';
+import Search from '../Search/SearchWeather';
 import SliderW from '../SliderSlick/SliderSlick';
-import Knock from '../Knock/KnockW';
-import Loader from '../Loader/LoaderW';
+import Knock from '../Knock/KnockWeather';
+import Loader from '../Loader/LoaderWeather';
 
-import styles from './LayoutW.module.scss';
+import styles from './LayoutWeather.module.scss';
 
 export default function Main() {
   const dispatch: AppDispatch = useDispatch();
@@ -48,6 +48,7 @@ export default function Main() {
     }, 3000),
     [dispatch],
   );
+
   useEffect(() => {
     debounceChangeInput(inputValue);
   }, [debounceChangeInput, inputValue]);

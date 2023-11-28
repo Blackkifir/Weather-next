@@ -7,12 +7,18 @@ import { RootState } from '@/redux/store';
 import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';
 
 import logo from '../../../public/logo.jpg';
-import styles from './HeaderW.module.scss';
+import styles from './HeaderWeather.module.scss';
 
 export default function Header({ localtime }: IPropsSliderProperties) {
   const dispatch = useDispatch();
   const { activeIndex } = useAppSelector((state: RootState) => state.weatherSlice);
   const timeSliceStr = localtime ? `${localtime.slice(11, 16)}pm` : '';
+
+  const forecastDaysButton = [
+    { index: 1, label: 'Today' },
+    { index: 2, label: 'Tommorow' },
+    { index: 3, label: 'Monthly Forecast' },
+  ];
 
   const onClickForecast = (activeNumber: number) => {
     dispatch(setActiveIndex(activeNumber));
@@ -32,33 +38,17 @@ export default function Header({ localtime }: IPropsSliderProperties) {
             </p>
           </div>
           <ul className="header-list">
-            <li>
-              <button
-                type="button"
-                onClick={() => onClickForecast(1)}
-                className={`item-list ${activeIndex === 1 ? styles.active : ''}`}
-              >
-                Today
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={() => onClickForecast(2)}
-                className={`item-list ${activeIndex === 2 ? styles.active : ''}`}
-              >
-                Tommorow
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={() => onClickForecast(3)}
-                className={`item-list ${activeIndex === 3 ? styles.active : ''}`}
-              >
-                Monthly Forecast
-              </button>
-            </li>
+            {forecastDaysButton.map((button) => (
+              <li key={button.index}>
+                <button
+                  type="button"
+                  className={`item-list ${activeIndex === button.index ? styles.active : ''}`}
+                  onClick={() => onClickForecast(button.index)}
+                >
+                  {button.label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

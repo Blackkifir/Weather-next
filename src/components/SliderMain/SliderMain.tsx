@@ -5,7 +5,7 @@ import { IPropsSliderProperties } from '@/components/SliderMain/interfaces/IProp
 import placeImg from '../../icons/longLine.svg';
 import temperatureImg from '../../icons/temperature.svg';
 
-import styles from './SliderMainW.module.scss';
+import styles from './SliderMain.module.scss';
 
 export default function SliderMain({
   name,
@@ -16,9 +16,15 @@ export default function SliderMain({
   vis_km,
   pressure_mb,
   wind_mph,
-  // text,
   icon,
 }: IPropsSliderProperties) {
+  const sliderMainProportions = [
+    { title: 'Humidity', proportions: `${humidity}%` },
+    { title: 'Visiblity', proportions: `${vis_km}km` },
+    { title: 'Air Pressure', proportions: `${pressure_mb}hpa` },
+    { title: 'Wind', proportions: `${wind_mph}mph` },
+  ];
+
   return (
     <div className={styles.parent}>
       <div className={styles.slider}>
@@ -44,34 +50,12 @@ export default function SliderMain({
           <Image src={`https:${icon}`} width={70} height={70} alt="cloudsImg" />
         </div>
         <div className={styles.blockBottom}>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Humidity</li>
-            <li className={styles.blockBottom__list__properties}>
-              {humidity}
-              %
-            </li>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Visiblity</li>
-            <li className={styles.blockBottom__list__properties}>
-              {vis_km}
-              km
-            </li>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Air Pressure</li>
-            <li className={styles.blockBottom__list__properties}>
-              {pressure_mb}
-              hpa
-            </li>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Wind</li>
-            <li className={styles.blockBottom__list__properties}>
-              {wind_mph}
-              mph
-            </li>
-          </ul>
+          {sliderMainProportions.map((obj) => (
+            <ul key={obj.title} className={styles.blockBottom__list}>
+              <li className={styles.blockBottom__list__text}>{obj.title}</li>
+              <li className={styles.blockBottom__list__properties}>{obj.proportions}</li>
+            </ul>
+          ))}
         </div>
       </div>
     </div>

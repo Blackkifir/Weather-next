@@ -6,7 +6,7 @@ import { RootState } from '@/redux/store';
 
 import searchImg from '../../icons/search-location.svg';
 
-import styles from './SearchW.module.scss';
+import styles from './SearchWeather.module.scss';
 
 export default function Search({ onChangeSearch }: IPropsChangeInput) {
   const { inputValue } = useAppSelector((state: RootState) => state.weatherSlice);

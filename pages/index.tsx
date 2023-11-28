@@ -1,7 +1,7 @@
 import './globals.css';
-import Header from '@/components/Header/HeaderW';
-import Footer from '@/components/Footer/FooterW';
-import Main from '@/components/Layout/LayoutW';
+import Header from '@/components/Header/HeaderWeather';
+import Footer from '@/components/Footer/FooterWeather';
+import Main from '@/components/Layout/LayoutWeather';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
 

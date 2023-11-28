@@ -1,4 +1,4 @@
-import styles from './KnockW.module.scss';
+import styles from './KnockWeather.module.scss';
 
 export default function Knock() {
   return (

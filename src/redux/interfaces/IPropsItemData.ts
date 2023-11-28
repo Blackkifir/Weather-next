@@ -3,7 +3,7 @@ import { IPropsSliderMain } from '../../components/SliderMain/interfaces/IPropsS
 export interface IPropsItemData {
   items: IPropsSliderMain,
   loading: boolean,
-  customError: string | null | undefined;
+  customError?: string | null;
   inputValue: string,
   activeIndex: number,
 }

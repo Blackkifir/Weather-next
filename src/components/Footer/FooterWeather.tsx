@@ -1,8 +1,8 @@
 import { RootState } from '@/redux/store';
 import { useAppSelector } from '@/redux/hooks/hooksW';
-import Widgets from '../Widgets/WidgetsW';
+import Widgets from '../Widgets/WidgetsWeather';
 
-import styles from './FooterW.module.scss';
+import styles from './FooterWeather.module.scss';
 
 export default function Footer() {
   const { widgetsData } = useAppSelector((state: RootState) => state.widgetsSlice);
