@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './WidgetsWeather.module.scss';
-import { IPropsWidgetsProperties } from './interfaces/IPropsWidgets';
+import { IPropsWidgetsProperties } from '../../redux/interfaces/IPropsForecasts';
 
 export default function Widgets({
   time,

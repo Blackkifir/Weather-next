@@ -9,11 +9,11 @@ import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
 
 import Search from '../Search/SearchWeather';
-import SliderW from '../SliderSlick/SliderSlick';
 import Knock from '../Knock/KnockWeather';
 import Loader from '../Loader/LoaderWeather';
 
 import styles from './LayoutWeather.module.scss';
+import SliderSlick from '../SliderSlick/SliderSlick';
 
 export default function Main() {
   const dispatch: AppDispatch = useDispatch();
@@ -64,7 +64,7 @@ export default function Main() {
       </Head>
       <Knock />
       <Search onChangeSearch={onChangeSearch} />
-      {loading ? <Loader /> : <SliderW />}
+      {loading ? <Loader /> : <SliderSlick />}
     </div>
   );
 }

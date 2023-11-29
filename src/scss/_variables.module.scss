@@ -45,3 +45,9 @@
     line-height: 25px;
     font-weight: 500;
 }
+
+@mixin proportionsWeather() {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+}

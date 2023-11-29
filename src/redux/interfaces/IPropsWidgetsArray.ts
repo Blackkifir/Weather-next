@@ -1,7 +1,7 @@
-import { IPropsWidgetsAll } from '@/components/Widgets/interfaces/IPropsWidgets';
+import { IPropsForecastAll } from '@/redux/interfaces/IPropsForecasts';
 
 export interface IPropsWidgetsArray {
-  widgetsData: IPropsWidgetsAll,
+  widgetsData: IPropsForecastAll,
   status: string,
 }
 
