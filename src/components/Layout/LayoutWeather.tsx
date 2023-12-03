@@ -3,8 +3,8 @@ import Head from 'next/head';
 
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { fetchWidgetsData } from '@/redux/slice/widgetsSlice';
-import { fetchDataSlider, setInputValue } from '@/redux/slice/weatherSlice';
+import { fetchForecastData, setInputValue, setLoading } from '@/redux/slice/weatherSlice';
+import { fetchWeekData } from '@/redux/slice/weekForecastSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
 
@@ -21,33 +21,31 @@ export default function Main() {
     items,
     loading,
     inputValue,
-    customError,
     activeIndex,
   } = useAppSelector((state: RootState) => state.weatherSlice);
+  const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(fetchDataSlider({
+      dispatch(fetchForecastData({
         items,
         loading,
-        customError,
         inputValue: str,
         activeIndex,
       }));
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(fetchWidgetsData(
-        {
-          items,
-          loading,
-          customError,
-          inputValue: str,
-          activeIndex,
-        },
-      ));
+      dispatch(setLoading(false));
     }, 3000),
     [dispatch],
   );
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    dispatch(fetchWeekData({
+      inputValue,
+      items,
+    }));
+  }, [dispatch]);
 
   useEffect(() => {
     debounceChangeInput(inputValue);
@@ -57,6 +55,7 @@ export default function Main() {
     dispatch(setInputValue(event.target.value));
   };
 
+  console.log(weekItems);
   return (
     <div className={styles.main_container}>
       <Head>

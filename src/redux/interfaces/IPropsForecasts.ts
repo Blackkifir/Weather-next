@@ -1,4 +1,23 @@
 export interface IPropsForecastAll {
+  current: {
+    last_updated: string,
+    temp_c: number,
+    temp_f: number,
+    humidity: number,
+    pressure_mb: number,
+    wind_mph: number,
+    wind_kph: number,
+    vis_km: number,
+    vis_miles: number,
+    condition: {
+      text: string,
+      icon: string,
+    }
+    precip_mm: number,
+    feelslike_c: number,
+    uv: number,
+    gust_mph: number
+  },
   forecast: {
     forecastday: [
       {
@@ -34,26 +53,18 @@ export interface IPropsForecastAll {
         ],
       },
     ]
-  }
+  },
+  location: {
+    name: string,
+    region: string,
+    localtime: string,
+    country: string,
+    tz_id: string,
+  },
 }
 
-export interface IPropsForecastProperties {
-  name?: string,
-  country?: string,
-  date: string,
-  avghumidity: number,
-  avgtemp_c: number,
-  avgvis_km: number,
-  avgvis_miles: number,
-  icon: string,
-  text: string,
-  maxtemp_c: number,
-  maxwind_kph: number,
-  maxwind_mph: number,
-  mintemp_c: number,
-  totalprecip_in: number,
-  totalprecip_mm: number,
-  uv: number,
-  pressure_mb: number,
-  pressure_in: number,
+export enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'fulfilled',
+  ERROR = 'error',
 }

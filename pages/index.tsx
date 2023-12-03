@@ -7,6 +7,7 @@ import { RootState } from '@/redux/store';
 
 export default function RootLayout() {
   const { items } = useAppSelector((state: RootState) => state.weatherSlice);
+
   return (
     <div>
       <Header

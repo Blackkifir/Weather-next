@@ -1,17 +1,17 @@
 import Image from 'next/image';
 import styles from './WidgetsWeather.module.scss';
-import { IPropsWidgetsProperties } from '../../redux/interfaces/IPropsForecasts';
+import { IPropsWidgets } from './interfaces/IPropsWidgets';
 
 export default function Widgets({
   time,
   temp_c,
   text,
   icon,
-}: IPropsWidgetsProperties) {
+}: IPropsWidgets) {
   if (!icon) {
     return null;
   }
-  const timeStr = time.slice(11, 16);
+  const timeStr = time.slice(11, 16).toString();
   return (
     <div className={styles.flexBox}>
       <div className={styles.flexBox_block_1}>

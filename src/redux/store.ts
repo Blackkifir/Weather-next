@@ -1,12 +1,12 @@
 /* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
 import weatherSlice from './slice/weatherSlice';
-import widgetsSlice from './slice/widgetsSlice';
+import weekForecastSlice from './slice/weekForecastSlice';
 
 const store = configureStore({
   reducer: {
     weatherSlice,
-    widgetsSlice,
+    weekForecastSlice,
   },
 });
 

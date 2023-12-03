@@ -10,11 +10,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import SliderAdditions from '../SliderAdditions/SliderAdditionW';
 import SliderTommorow from '../SliderTommorow/SliderTommorow';
+import SliderWeekForecast from '../SliderWeek/SliderWeekForecast';
 
 export default function SliderSlick() {
-  const { items, activeIndex } = useAppSelector((state: RootState) => state.weatherSlice);
-  const { widgetsData } = useAppSelector((state: RootState) => state.widgetsSlice);
-  const forecastDay = widgetsData.forecast.forecastday[0];
+  const { items, activeIndex, loading } = useAppSelector((state: RootState) => state.weatherSlice);
+  const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const forecastDay = items.forecast.forecastday[0];
+  const tommorowDay = weekItems.days[0 + 1];
 
   const settings = {
     dots: true,
@@ -32,48 +34,54 @@ export default function SliderSlick() {
       slidesToScroll={settings.slidesToScroll}
     >
       <div>
-        { activeIndex === 1
-          ? (
-            <SliderMain
-              name={items.location.name}
-              region={items.location.region}
-              localtime={items.location.localtime}
-              country={items.location.country}
-              last_updated={items.current.last_updated}
-              temp_c={items.current.temp_c}
-              temp_f={items.current.temp_f}
-              humidity={items.current.humidity}
-              pressure_mb={items.current.pressure_mb}
-              wind_kph={items.current.wind_kph}
-              wind_mph={items.current.wind_mph}
-              vis_km={items.current.vis_km}
-              vis_miles={items.current.vis_miles}
-              text={items.current.condition.text}
-              icon={items.current.condition.icon}
-            />
-          ) : activeIndex === 2
-          && (
-            <SliderTommorow
-              name={items.location.name}
-              country={items.location.country}
-              date={forecastDay.date}
-              avghumidity={forecastDay.day.avghumidity}
-              avgtemp_c={forecastDay.day.avgtemp_c}
-              avgvis_km={forecastDay.day.avgvis_km}
-              avgvis_miles={forecastDay.day.avgvis_miles}
-              icon={forecastDay.day.condition.icon}
-              text={forecastDay.day.condition.text}
-              maxtemp_c={forecastDay.day.maxtemp_c}
-              maxwind_kph={forecastDay.day.maxwind_kph}
-              maxwind_mph={forecastDay.day.maxwind_mph}
-              mintemp_c={forecastDay.day.mintemp_c}
-              totalprecip_in={forecastDay.day.totalprecip_in}
-              totalprecip_mm={forecastDay.day.totalprecip_mm}
-              uv={forecastDay.day.uv}
-              pressure_mb={forecastDay.hour[0].pressure_mb}
-              pressure_in={forecastDay.hour[0].pressure_in}
-            />
-          ) }
+        {!loading && activeIndex === 1 && (
+        <SliderMain
+          name={items.location.name}
+          localtime={items.location.localtime}
+          country={items.location.country}
+          temp_c={items.current.temp_c}
+          humidity={items.current.humidity}
+          pressure_mb={items.current.pressure_mb}
+          wind_kph={items.current.wind_kph}
+          wind_mph={items.current.wind_mph}
+          vis_km={items.current.vis_km}
+          vis_miles={items.current.vis_miles}
+          icon={items.current.condition.icon}
+        />
+        )}
+        {!loading && activeIndex === 2 && (
+          <SliderTommorow
+            nameAddress={weekItems.address}
+            dateDay={tommorowDay.datetime}
+            iconSlider={items.current.condition.icon}
+            visibility={tommorowDay.visibility}
+            windspeed={tommorowDay.windspeed}
+            pressure={tommorowDay.pressure}
+            humidity={tommorowDay.humidity}
+            temp={tommorowDay.temp}
+            country={items.location.country}
+            // name={items.location.name}
+            // country={items.location.country}
+            // date={forecastDay.date}
+            // avghumidity={forecastDay.day.avghumidity}
+            // avgtemp_c={forecastDay.day.avgtemp_c}
+            // avgvis_km={forecastDay.day.avgvis_km}
+            // avgvis_miles={forecastDay.day.avgvis_miles}
+            // icon={forecastDay.day.condition.icon}
+            // maxwind_kph={forecastDay.day.maxwind_kph}
+            // maxwind_mph={forecastDay.day.maxwind_mph}
+            // pressure_mb={forecastDay.hour[0].pressure_mb}
+            // pressure_in={forecastDay.hour[0].pressure_in}
+          />
+        )}
+        {!loading && activeIndex === 3 && (
+        <SliderWeekForecast
+          icon={forecastDay.day.condition.icon}
+          mintemp_c={forecastDay.day.mintemp_c}
+          avgtemp_c={forecastDay.day.mintemp_c}
+          maxtemp_c={forecastDay.day.maxtemp_c}
+        />
+        )}
       </div>
       <div>
         <SliderAdditions

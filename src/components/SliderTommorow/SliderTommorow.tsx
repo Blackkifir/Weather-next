@@ -1,25 +1,25 @@
 import Image from 'next/image';
-import { IPropsForecastProperties } from '@/redux/interfaces/IPropsForecasts';
 
 import placeImg from '../../icons/longLine.svg';
 import temperatureImg from '../../icons/temperature.svg';
 
 import styles from './SliderTommorow.module.scss';
+import { IPropsSliderTommorowAll } from './interfaces/IPropsSliderTommorow';
 
 export default function SliderTommorow({
-  name,
+  nameAddress,
+  dateDay,
+  iconSlider,
+  visibility,
+  windspeed,
+  pressure,
+  humidity,
+  temp,
   country,
-  date,
-  avghumidity,
-  avgtemp_c,
-  avgvis_km,
-  avgvis_miles,
-  icon,
-  maxwind_kph,
-  maxwind_mph,
-  pressure_mb,
-  pressure_in,
-}: IPropsForecastProperties) {
+}: IPropsSliderTommorowAll) {
+  if (!iconSlider) {
+    return null;
+  }
   return (
     <div>
       <div className={styles.parent}>
@@ -27,10 +27,10 @@ export default function SliderTommorow({
           <div className={styles.blockTop}>
             <div>
               <h3 className={styles.blockTop__title}>
-                {name}
+                {nameAddress}
                 <Image src={...placeImg} className={styles.placeImg} alt="not-found" />
               </h3>
-              <p className={styles.blockTop__date}>{date}</p>
+              <p className={styles.blockTop__date}>{dateDay}</p>
             </div>
             <h4 className={styles.blockTop__country}>
               {country}
@@ -40,17 +40,17 @@ export default function SliderTommorow({
           <div className={styles.blockCenter}>
             <Image src={...temperatureImg} alt="temperatureImg" />
             <span className={styles.blockCenter__degrees}>
-              {avgtemp_c}
+              {temp}
               °C
             </span>
-            <Image src={`https:${icon}`} width={70} height={70} alt="cloudsImg" />
+            <Image src={`https:${iconSlider}`} width={70} height={70} alt="cloudsImg" />
           </div>
           <div className={styles.blockBottom}>
             <ul className={styles.blockBottom__list}>
               <li className={styles.blockBottom__list__text}>Humidity</li>
               <select className={styles.blockBottom__list__selects}>
                 <option className={styles.blockBottom__list__proportions}>
-                  {avghumidity}
+                  {humidity}
                   %
                 </option>
               </select>
@@ -59,12 +59,8 @@ export default function SliderTommorow({
               <li className={styles.blockBottom__list__text}>Visibility</li>
               <select className={styles.blockBottom__list__selects}>
                 <option className={styles.blockBottom__list__proportions}>
-                  {avgvis_km}
+                  {visibility}
                   km
-                </option>
-                <option className={styles.blockBottom__list__proportions}>
-                  {avgvis_miles}
-                  -miles
                 </option>
               </select>
             </ul>
@@ -72,12 +68,8 @@ export default function SliderTommorow({
               <li className={styles.blockBottom__list__text}>Air Pressure</li>
               <select className={styles.blockBottom__list__selects}>
                 <option className={styles.blockBottom__list__proportions}>
-                  {pressure_mb}
-                  mb
-                </option>
-                <option className={styles.blockBottom__list__proportions}>
-                  {pressure_in}
-                  in
+                  {pressure}
+                  hpa
                 </option>
               </select>
             </ul>
@@ -85,12 +77,8 @@ export default function SliderTommorow({
               <li className={styles.blockBottom__list__text}>Wind</li>
               <select className={styles.blockBottom__list__selects}>
                 <option className={styles.blockBottom__list__proportions}>
-                  {maxwind_kph}
+                  {windspeed}
                   kph
-                </option>
-                <option className={styles.blockBottom__list__proportions}>
-                  {maxwind_mph}
-                  mph
                 </option>
               </select>
             </ul>

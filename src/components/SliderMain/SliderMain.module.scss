@@ -71,5 +71,19 @@
       line-height: 22px;
       font-weight: 700;
     }
+
+    &__selects {
+      @include proportionsWeather();
+      width: 100%;
+      height: 30px;
+      background-color: transparent;
+      border: none;
+      color: #FFFFFF;
+    }
+    
+    &__proportions {
+      @include proportionsWeather();
+      background-color:  rgb(131, 40, 159);
+    }
   }
 }

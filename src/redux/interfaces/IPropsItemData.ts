@@ -1,9 +1,9 @@
-import { IPropsSliderMain } from '../../components/SliderMain/interfaces/IPropsSliderMain';
+import { IPropsForecastAll } from './IPropsForecasts';
 
 export interface IPropsItemData {
-  items: IPropsSliderMain,
-  loading: boolean,
-  customError?: string | null;
+  items: IPropsForecastAll,
+  loading?: boolean,
   inputValue: string,
-  activeIndex: number,
+  activeIndex?: number,
+  error?: null | Error,
 }

@@ -1,11 +1,12 @@
 import Image from 'next/image';
+
 import temperatureAdditions from '../../icons/temperatureAdditions.svg';
 import precipitationImg from '../../icons/precipitation.svg';
 import windImg from '../../icons/wind.svg';
 import uvIndex from '../../icons/uvIndex.svg';
 
 import styles from './SliderAdditions.module.scss';
-import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';
+import { IPropsSliderAddition } from './interfaces/IPropsSliderAddition';
 
 export default function SliderAdditions({
   tz_id,
@@ -14,7 +15,7 @@ export default function SliderAdditions({
   precip_mm,
   uv,
   gust_mph,
-}: IPropsSliderProperties) {
+}: IPropsSliderAddition) {
   return (
     <div className={styles.parent}>
       <div className={styles.slider}>

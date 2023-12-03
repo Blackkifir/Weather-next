@@ -1,15 +1,9 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IPropsItemData } from '../interfaces/IPropsItemData';
-import { IPropsSliderMain } from '../../components/SliderMain/interfaces/IPropsSliderMain';
+import { IPropsForecastAll } from '../interfaces/IPropsForecasts';
 
 const initialState: IPropsItemData = {
   items: {
-    location: {
-      name: '',
-      region: '',
-      localtime: '',
-      country: '',
-    },
     current: {
       last_updated: '',
       temp_c: 0,
@@ -24,28 +18,82 @@ const initialState: IPropsItemData = {
         icon: '',
         text: '',
       },
+      precip_mm: 0,
+      feelslike_c: 0,
+      uv: 0,
+      gust_mph: 0,
+    },
+    forecast: {
+      forecastday: [
+        {
+          date: '',
+          day: {
+            avghumidity: 0,
+            avgtemp_c: 0,
+            avgvis_km: 0,
+            avgvis_miles: 0,
+            condition: {
+              icon: '',
+              text: '',
+            },
+            maxtemp_c: 0,
+            maxwind_kph: 0,
+            maxwind_mph: 0,
+            mintemp_c: 0,
+            totalprecip_in: 0,
+            totalprecip_mm: 0,
+            uv: 0,
+          },
+          hour: [
+            {
+              time: '',
+              temp_c: 0,
+              condition: {
+                text: '',
+                icon: '',
+              },
+              pressure_mb: 0,
+              pressure_in: 0,
+            },
+          ],
+        },
+      ],
+    },
+    location: {
+      name: '',
+      region: '',
+      localtime: '',
+      country: '',
+      tz_id: '',
     },
   },
   loading: true,
-  customError: null,
   inputValue: '',
   activeIndex: 1,
+  error: null,
 };
 
-export const fetchDataSlider = createAsyncThunk(
-  'weather/fetchDataSlider',
+export const fetchForecastData = createAsyncThunk(
+  'widgets/fetchWidgetsData',
   async (params: IPropsItemData, { rejectWithValue }) => {
     const { inputValue } = params;
+
     try {
-      const response = await
-      fetch(`http://api.weatherapi.com/v1/current.json?key=e43e4a8a8fd6440dbd3210041231311&q=${inputValue || 'Kyiv'}`);
+      const response = await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=e43e4a8a8fd6440dbd3210041231311&q=${inputValue || 'Kyiv'}`,
+      );
+
       if (!response.ok) {
-        throw new Error('The request failed');
+        throw new Error('request weatherSliceResponse failed');
       }
-      const data = await response.json() as IPropsSliderMain;
+
+      const data = await response.json() as IPropsForecastAll;
       return data;
     } catch (error) {
-      return rejectWithValue((error as Error).message);
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue('request weatherSlice failed');
     }
   },
 );
@@ -57,11 +105,9 @@ export const weatherSlice = createSlice({
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setItems(state, action: PayloadAction<IPropsSliderMain>) {
+    setItems(state, action: PayloadAction<IPropsForecastAll>) {
       state.items = action.payload;
-    },
-    setError(state, action: PayloadAction<string | null>) {
-      state.customError = action.payload;
+      state.error = null;
     },
     setInputValue(state, action: PayloadAction<string>) {
       state.inputValue = action.payload;
@@ -69,20 +115,25 @@ export const weatherSlice = createSlice({
     setActiveIndex(state, action: PayloadAction<number>) {
       state.activeIndex = action.payload;
     },
+    setError(state, action: PayloadAction<Error | null>) {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDataSlider.pending, (state) => {
+      .addCase(fetchForecastData.pending, (state) => {
         state.loading = true;
-        state.customError = null;
       })
-      .addCase(fetchDataSlider.fulfilled, (state, action) => {
+      .addCase(fetchForecastData.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        if (!(action.payload instanceof Error)) {
+          state.items = action.payload;
+          state.error = null;
+        }
       })
-      .addCase(fetchDataSlider.rejected, (state, action) => {
-        state.loading = false;
-        state.customError = action.payload as string;
+      .addCase(fetchForecastData.rejected, (state, action) => {
+        state.loading = true;
+        state.error = action.payload as Error;
       });
   },
 });
@@ -90,8 +141,8 @@ export const weatherSlice = createSlice({
 export const {
   setLoading,
   setItems,
-  setError,
   setInputValue,
   setActiveIndex,
+  setError,
 } = weatherSlice.actions;
 export default weatherSlice.reducer;

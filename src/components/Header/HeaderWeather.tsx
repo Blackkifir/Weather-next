@@ -4,12 +4,12 @@ import { setActiveIndex } from '@/redux/slice/weatherSlice';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
-import { IPropsSliderProperties } from '../SliderMain/interfaces/IPropsSliderMain';
+import { IPropsHeader } from './interfaces/IPropsHeader';
 
 import logo from '../../../public/logo.jpg';
 import styles from './HeaderWeather.module.scss';
 
-export default function Header({ localtime }: IPropsSliderProperties) {
+export default function Header({ localtime }: IPropsHeader) {
   const dispatch = useDispatch();
   const { activeIndex } = useAppSelector((state: RootState) => state.weatherSlice);
   const timeSliceStr = localtime ? `${localtime.slice(11, 16)}pm` : '';
@@ -17,7 +17,7 @@ export default function Header({ localtime }: IPropsSliderProperties) {
   const forecastDaysButton = [
     { index: 1, label: 'Today' },
     { index: 2, label: 'Tommorow' },
-    { index: 3, label: 'Monthly Forecast' },
+    { index: 3, label: 'Week Forecast' },
   ];
 
   const onClickForecast = (activeNumber: number) => {
