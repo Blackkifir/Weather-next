@@ -2,8 +2,7 @@ import { IPropsForecastAll } from './IPropsForecasts';
 
 export interface IPropsItemData {
   items: IPropsForecastAll,
-  loading?: boolean,
-  inputValue: string,
+  isloading?: boolean,
   activeIndex?: number,
   error?: null | Error,
 }

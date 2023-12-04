@@ -13,7 +13,7 @@ import SliderTommorow from '../SliderTommorow/SliderTommorow';
 import SliderWeekForecast from '../SliderWeek/SliderWeekForecast';
 
 export default function SliderSlick() {
-  const { items, activeIndex, loading } = useAppSelector((state: RootState) => state.weatherSlice);
+  const { items, activeIndex, isloading } = useAppSelector((state: RootState) => state.weatherSlice);
   const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
   const forecastDay = items.forecast.forecastday[0];
   const tommorowDay = weekItems.days[0 + 1];
@@ -34,7 +34,7 @@ export default function SliderSlick() {
       slidesToScroll={settings.slidesToScroll}
     >
       <div>
-        {!loading && activeIndex === 1 && (
+        {!isloading && activeIndex === 1 && (
         <SliderMain
           name={items.location.name}
           localtime={items.location.localtime}
@@ -49,7 +49,7 @@ export default function SliderSlick() {
           icon={items.current.condition.icon}
         />
         )}
-        {!loading && activeIndex === 2 && (
+        {!isloading && activeIndex === 2 && (
           <SliderTommorow
             nameAddress={weekItems.address}
             dateDay={tommorowDay.datetime}
@@ -74,7 +74,7 @@ export default function SliderSlick() {
             // pressure_in={forecastDay.hour[0].pressure_in}
           />
         )}
-        {!loading && activeIndex === 3 && (
+        {!isloading && activeIndex === 3 && (
         <SliderWeekForecast
           icon={forecastDay.day.condition.icon}
           mintemp_c={forecastDay.day.mintemp_c}

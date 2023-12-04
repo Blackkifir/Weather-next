@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import moment from 'moment';
 import styles from './WidgetsWeather.module.scss';
 import { IPropsWidgets } from './interfaces/IPropsWidgets';
 
@@ -11,7 +12,7 @@ export default function Widgets({
   if (!icon) {
     return null;
   }
-  const timeStr = time.slice(11, 16).toString();
+  const timeStr = moment(time).format('HH:mm');
   return (
     <div className={styles.flexBox}>
       <div className={styles.flexBox_block_1}>

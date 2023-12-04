@@ -1,5 +1,5 @@
+import moment from 'moment';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { IPropsItemData } from '../interfaces/IPropsItemData';
 import { IPropsWeekData } from '../interfaces/IPropsWeekData';
 import { IPropsWeekAll } from '../interfaces/IPropsWeekAll';
 
@@ -34,20 +34,14 @@ const initialState: IPropsWeekData = {
 
 export const fetchWeekData = createAsyncThunk(
   'weekForecast/fetchWeekData',
-  async (params: IPropsItemData, { rejectWithValue }) => {
-    const currentDate = new Date();
-    const currentDateStr = currentDate.toISOString().split('T')[0];
+  async (inputValue: string, { rejectWithValue }) => {
+    const currentDate = moment().format('YYYY-MM-DD');
+    const endDate = moment().add(7, 'days').format('YYYY-MM-DD');
 
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
-    const endDateStr = endDate.toISOString().split('T')[0];
-
-    const { inputValue } = params;
     try {
       // eslint-disable-next-line max-len
-      const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValue || 'Kyiv'}/${currentDateStr}/${endDateStr}?key=V2AN8FGDWJUTFNZ2A8CT6FW8B`;
+      const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValue || 'Kyiv'}/${currentDate}/${endDate}?key=V2AN8FGDWJUTFNZ2A8CT6FW8B`;
       const response = await fetch(apiUrl);
-      console.log(apiUrl);
 
       if (!response.ok) {
         throw new Error('request weekForecastResponse failed');

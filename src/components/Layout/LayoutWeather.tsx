@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Head from 'next/head';
 
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { fetchForecastData, setInputValue, setLoading } from '@/redux/slice/weatherSlice';
+import { fetchForecastData, setLoading } from '@/redux/slice/weatherSlice';
 import { fetchWeekData } from '@/redux/slice/weekForecastSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
@@ -16,24 +16,16 @@ import styles from './LayoutWeather.module.scss';
 import SliderSlick from '../SliderSlick/SliderSlick';
 
 export default function Main() {
+  const [inputValue, setInputValue] = useState<string>('');
   const dispatch: AppDispatch = useDispatch();
   const {
-    items,
-    loading,
-    inputValue,
-    activeIndex,
+    isloading,
   } = useAppSelector((state: RootState) => state.weatherSlice);
-  const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(fetchForecastData({
-        items,
-        loading,
-        inputValue: str,
-        activeIndex,
-      }));
+      dispatch(fetchForecastData(str));
       dispatch(setLoading(false));
     }, 3000),
     [dispatch],
@@ -41,29 +33,25 @@ export default function Main() {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(fetchWeekData({
-      inputValue,
-      items,
-    }));
-  }, [dispatch]);
+    dispatch(fetchWeekData(inputValue));
+  }, [dispatch, inputValue]);
 
   useEffect(() => {
     debounceChangeInput(inputValue);
   }, [debounceChangeInput, inputValue]);
 
   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputValue(event.target.value));
+    setInputValue(event.target.value);
   };
 
-  console.log(weekItems);
   return (
     <div className={styles.main_container}>
       <Head>
         <title>Weather</title>
       </Head>
       <Knock />
-      <Search onChangeSearch={onChangeSearch} />
-      {loading ? <Loader /> : <SliderSlick />}
+      <Search inputValue={inputValue} onChangeSearch={onChangeSearch} />
+      {isloading ? <Loader /> : <SliderSlick />}
     </div>
   );
 }

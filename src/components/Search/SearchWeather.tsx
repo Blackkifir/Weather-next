@@ -1,15 +1,12 @@
 import Image from 'next/image';
 
 import { IPropsChangeInput } from '@/redux/interfaces/IPropsFunc';
-import { useAppSelector } from '@/redux/hooks/hooksW';
-import { RootState } from '@/redux/store';
 
 import searchImg from '../../icons/search-location.svg';
 
 import styles from './SearchWeather.module.scss';
 
-export default function Search({ onChangeSearch }: IPropsChangeInput) {
-  const { inputValue } = useAppSelector((state: RootState) => state.weatherSlice);
+export default function Search({ onChangeSearch, inputValue }: IPropsChangeInput) {
   return (
     <div className={styles.search_flexBox}>
       <form>

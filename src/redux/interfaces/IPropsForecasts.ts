@@ -62,9 +62,3 @@ export interface IPropsForecastAll {
     tz_id: string,
   },
 }
-
-export enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'fulfilled',
-  ERROR = 'error',
-}

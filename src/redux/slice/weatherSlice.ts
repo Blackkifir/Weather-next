@@ -67,17 +67,14 @@ const initialState: IPropsItemData = {
       tz_id: '',
     },
   },
-  loading: true,
-  inputValue: '',
+  isloading: true,
   activeIndex: 1,
   error: null,
 };
 
 export const fetchForecastData = createAsyncThunk(
   'widgets/fetchWidgetsData',
-  async (params: IPropsItemData, { rejectWithValue }) => {
-    const { inputValue } = params;
-
+  async (inputValue: string, { rejectWithValue }) => {
     try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=e43e4a8a8fd6440dbd3210041231311&q=${inputValue || 'Kyiv'}`,
@@ -103,14 +100,11 @@ export const weatherSlice = createSlice({
   initialState,
   reducers: {
     setLoading(state, action: PayloadAction<boolean>) {
-      state.loading = action.payload;
+      state.isloading = action.payload;
     },
     setItems(state, action: PayloadAction<IPropsForecastAll>) {
       state.items = action.payload;
       state.error = null;
-    },
-    setInputValue(state, action: PayloadAction<string>) {
-      state.inputValue = action.payload;
     },
     setActiveIndex(state, action: PayloadAction<number>) {
       state.activeIndex = action.payload;
@@ -122,17 +116,17 @@ export const weatherSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchForecastData.pending, (state) => {
-        state.loading = true;
+        state.isloading = true;
       })
       .addCase(fetchForecastData.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isloading = false;
         if (!(action.payload instanceof Error)) {
           state.items = action.payload;
           state.error = null;
         }
       })
       .addCase(fetchForecastData.rejected, (state, action) => {
-        state.loading = true;
+        state.isloading = true;
         state.error = action.payload as Error;
       });
   },
@@ -141,7 +135,6 @@ export const weatherSlice = createSlice({
 export const {
   setLoading,
   setItems,
-  setInputValue,
   setActiveIndex,
   setError,
 } = weatherSlice.actions;

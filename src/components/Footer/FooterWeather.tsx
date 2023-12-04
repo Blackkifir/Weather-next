@@ -5,11 +5,11 @@ import Widgets from '../Widgets/WidgetsWeather';
 import styles from './FooterWeather.module.scss';
 
 export default function Footer() {
-  const { items, loading } = useAppSelector((state: RootState) => state.weatherSlice);
+  const { items, isloading } = useAppSelector((state: RootState) => state.weatherSlice);
   return (
     <footer>
-      <div className={!loading ? styles.footer_container : styles.hiddenFooter}>
-        {!loading
+      <div className={!isloading ? styles.footer_container : styles.hiddenFooter}>
+        {!isloading
         && items.forecast.forecastday[0].hour.map((obj) => (
           <Widgets
             key={obj.time}
