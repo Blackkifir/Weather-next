@@ -1,4 +1,5 @@
 export interface IPropsWeekAll {
+  icon: string;
   address: string,
   timezone: string,
   days: [
@@ -7,8 +8,8 @@ export interface IPropsWeekAll {
       feelslike: string,
       hours: [
         {
+          conditions: string;
           datetime: string,
-          icon: string,
           temp: string,
         },
       ],

@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
 import { IPropsSliderMain } from './interfaces/IPropsSliderMain';
-import placeImg from '../../icons/longLine.svg';
-import temperatureImg from '../../icons/temperature.svg';
+import placeImg from '../../../icons/longLine.svg';
+import temperatureImg from '../../../icons/temperature.svg';
 
-import styles from './SliderMain.module.scss';
+import styles from './SliderToday.module.scss';
 
-export default function SliderMain({
+export default function SliderToday({
   name,
   localtime,
   country,
@@ -49,7 +49,7 @@ export default function SliderMain({
         <div className={styles.blockBottom}>
           <ul className={styles.blockBottom__list}>
             <li className={styles.blockBottom__list__text}>Humidity</li>
-            <select className={styles.blockBottom__list__selects}>
+            <select name="selects" className={styles.blockBottom__list__selects}>
               <option className={styles.blockBottom__list__proportions}>
                 {humidity}
                 %
@@ -58,7 +58,7 @@ export default function SliderMain({
           </ul>
           <ul className={styles.blockBottom__list}>
             <li className={styles.blockBottom__list__text}>Visibility</li>
-            <select className={styles.blockBottom__list__selects}>
+            <select name="selects" className={styles.blockBottom__list__selects}>
               <option className={styles.blockBottom__list__proportions}>
                 {vis_km}
                 km
@@ -71,7 +71,7 @@ export default function SliderMain({
           </ul>
           <ul className={styles.blockBottom__list}>
             <li className={styles.blockBottom__list__text}>Air Pressure</li>
-            <select className={styles.blockBottom__list__selects}>
+            <select name="selects" className={styles.blockBottom__list__selects}>
               <option className={styles.blockBottom__list__proportions}>
                 {pressure_mb}
                 hpa
@@ -80,7 +80,7 @@ export default function SliderMain({
           </ul>
           <ul className={styles.blockBottom__list}>
             <li className={styles.blockBottom__list__text}>Wind</li>
-            <select className={styles.blockBottom__list__selects}>
+            <select name="selects" className={styles.blockBottom__list__selects}>
               <option className={styles.blockBottom__list__proportions}>
                 {wind_mph}
                 mph

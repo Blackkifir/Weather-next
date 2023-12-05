@@ -15,6 +15,7 @@ import styles from './HeaderWeather.module.scss';
 export default function Header({ localtime }: IPropsHeader) {
   const dispatch = useDispatch();
   const { activeIndex } = useAppSelector((state: RootState) => state.weatherSlice);
+  moment.suppressDeprecationWarnings = true;
   const timeSliceStr = moment(localtime).format('HH:mm');
   const onClickForecast = (activeNumber: number) => {
     dispatch(setActiveIndex(activeNumber));

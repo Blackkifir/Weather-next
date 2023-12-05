@@ -1,21 +1,22 @@
 import Image from 'next/image';
 
-import temperatureAdditions from '../../icons/temperatureAdditions.svg';
-import precipitationImg from '../../icons/precipitation.svg';
-import windImg from '../../icons/wind.svg';
-import uvIndex from '../../icons/uvIndex.svg';
+import { IPropsAdditionsTommorow } from './interfaces/IPropsAdditionsTommorow';
 
-import styles from './SliderAdditions.module.scss';
-import { IPropsSliderAddition } from './interfaces/IPropsSliderAddition';
+import temperatureAdditions from '../../../icons/temperatureAdditions.svg';
+import precipitationImg from '../../../icons/precipitation.svg';
+import windImg from '../../../icons/wind.svg';
+import uvIndex from '../../../icons/uvIndex.svg';
 
-export default function SliderAdditions({
+import styles from './SliderAdditionsTommorow.module.scss';
+
+export default function SliderAdditionsTommorow({
   tz_id,
   last_updated,
-  feelslike_c,
-  precip_mm,
-  uv,
-  gust_mph,
-}: IPropsSliderAddition) {
+  feelslike,
+  precipcover,
+  uvindex,
+  windspeed,
+}: IPropsAdditionsTommorow) {
   return (
     <div className={styles.parent}>
       <div className={styles.slider}>
@@ -34,7 +35,7 @@ export default function SliderAdditions({
               </p>
               <p className={styles.leftBlock__block__item}>
                 <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
-                {feelslike_c}
+                {feelslike}
                 °C
               </p>
             </div>
@@ -44,7 +45,7 @@ export default function SliderAdditions({
               </p>
               <p className={styles.leftBlock__block__item}>
                 <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
-                {gust_mph}
+                {windspeed}
                 kph
               </p>
             </div>
@@ -56,7 +57,7 @@ export default function SliderAdditions({
               </p>
               <p className={styles.rightBlock__block__item}>
                 <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
-                {precip_mm}
+                {precipcover}
                 mm
               </p>
             </div>
@@ -65,8 +66,8 @@ export default function SliderAdditions({
                 UV-index
               </p>
               <p className={styles.rightBlock__block__item}>
-                <Image src={...uvIndex} width={25} height={25} alt="temperatureImg" />
-                {uv}
+                <Image src={...uvIndex} width={25} height={25} alt="uvImg" />
+                {uvindex}
               </p>
             </div>
           </div>

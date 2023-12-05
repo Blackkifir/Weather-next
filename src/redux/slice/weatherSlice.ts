@@ -76,9 +76,9 @@ export const fetchForecastData = createAsyncThunk(
   'widgets/fetchWidgetsData',
   async (inputValue: string, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=e43e4a8a8fd6440dbd3210041231311&q=${inputValue || 'Kyiv'}`,
-      );
+      // eslint-disable-next-line max-len
+      const todayApi = `https://api.weatherapi.com/v1/forecast.json?key=e43e4a8a8fd6440dbd3210041231311&q=${inputValue || 'Kyiv'}`;
+      const response = await fetch(todayApi);
 
       if (!response.ok) {
         throw new Error('request weatherSliceResponse failed');

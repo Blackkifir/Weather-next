@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import moment from 'moment';
-import styles from './WidgetsWeather.module.scss';
 import { IPropsWidgets } from './interfaces/IPropsWidgets';
+import styles from './WidgetsToday.module.scss';
 
-export default function Widgets({
+export default function WidgetsToday({
   time,
   temp_c,
   text,
@@ -12,6 +12,7 @@ export default function Widgets({
   if (!icon) {
     return null;
   }
+
   const timeStr = moment(time).format('HH:mm');
   return (
     <div className={styles.flexBox}>

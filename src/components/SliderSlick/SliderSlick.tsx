@@ -4,18 +4,18 @@ import Slider from 'react-slick';
 import { useAppSelector } from '@/redux/hooks/hooksW';
 import { RootState } from '@/redux/store';
 
-import SliderMain from '../SliderMain/SliderMain';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import SliderAdditions from '../SliderAdditions/SliderAdditionW';
-import SliderTommorow from '../SliderTommorow/SliderTommorow';
-import SliderWeekForecast from '../SliderWeek/SliderWeekForecast';
+import SliderToday from '../SliderTodayForecast/SliderToday/SliderToday';
+import SliderAdditionsToday from '../SliderTodayForecast/SliderAdditionsToday/SliderAdditionsToday';
+import SliderTommorow from '../SliderTommorowForecast/SliderTommorow/SliderTommorow';
+import SliderWeek from '../SliderWeekForecast/SliderWeek/SliderWeek';
+import SliderAdditionsTommorow from '../SliderTommorowForecast/SliderAdditionsTommorow/SliderAdditionsTommorow';
+import SliderAdditionsWeek from '../SliderWeekForecast/SliderAdditionsWeek/SliderAdditionsWeek';
 
 export default function SliderSlick() {
   const { items, activeIndex, isloading } = useAppSelector((state: RootState) => state.weatherSlice);
   const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
-  const forecastDay = items.forecast.forecastday[0];
   const tommorowDay = weekItems.days[0 + 1];
 
   const settings = {
@@ -25,17 +25,14 @@ export default function SliderSlick() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  return (
-    <Slider
-      dots={settings.dots}
-      infinite={settings.infinite}
-      speed={settings.speed}
-      slidesToShow={settings.slidesToShow}
-      slidesToScroll={settings.slidesToScroll}
-    >
-      <div>
-        {!isloading && activeIndex === 1 && (
-        <SliderMain
+
+  let slidersRender;
+  let slidersAdditionsRender;
+
+  if (!isloading) {
+    if (activeIndex === 1) {
+      slidersRender = (
+        <SliderToday
           name={items.location.name}
           localtime={items.location.localtime}
           country={items.location.country}
@@ -48,43 +45,36 @@ export default function SliderSlick() {
           vis_miles={items.current.vis_miles}
           icon={items.current.condition.icon}
         />
-        )}
-        {!isloading && activeIndex === 2 && (
-          <SliderTommorow
-            nameAddress={weekItems.address}
-            dateDay={tommorowDay.datetime}
-            iconSlider={items.current.condition.icon}
-            visibility={tommorowDay.visibility}
-            windspeed={tommorowDay.windspeed}
-            pressure={tommorowDay.pressure}
-            humidity={tommorowDay.humidity}
-            temp={tommorowDay.temp}
-            country={items.location.country}
-            // name={items.location.name}
-            // country={items.location.country}
-            // date={forecastDay.date}
-            // avghumidity={forecastDay.day.avghumidity}
-            // avgtemp_c={forecastDay.day.avgtemp_c}
-            // avgvis_km={forecastDay.day.avgvis_km}
-            // avgvis_miles={forecastDay.day.avgvis_miles}
-            // icon={forecastDay.day.condition.icon}
-            // maxwind_kph={forecastDay.day.maxwind_kph}
-            // maxwind_mph={forecastDay.day.maxwind_mph}
-            // pressure_mb={forecastDay.hour[0].pressure_mb}
-            // pressure_in={forecastDay.hour[0].pressure_in}
-          />
-        )}
-        {!isloading && activeIndex === 3 && (
-        <SliderWeekForecast
-          icon={forecastDay.day.condition.icon}
-          mintemp_c={forecastDay.day.mintemp_c}
-          avgtemp_c={forecastDay.day.mintemp_c}
-          maxtemp_c={forecastDay.day.maxtemp_c}
+      );
+    } else if (activeIndex === 2) {
+      slidersRender = (
+        <SliderTommorow
+          dateDay={tommorowDay.datetime}
+          iconSlider={items.current.condition.icon}
+          visibility={tommorowDay.visibility}
+          windspeed={tommorowDay.windspeed}
+          pressure={tommorowDay.pressure}
+          humidity={tommorowDay.humidity}
+          temp={tommorowDay.temp}
+          country={items.location.country}
+          nameAddress={items.location.name}
         />
-        )}
-      </div>
-      <div>
-        <SliderAdditions
+      );
+    } else if (activeIndex === 3) {
+      slidersRender = (
+        <SliderWeek
+          icon={items.current.condition.icon}
+          country={items.location.country}
+          name={items.location.name}
+        />
+      );
+    }
+  }
+
+  if (!isloading) {
+    if (activeIndex === 1) {
+      slidersAdditionsRender = (
+        <SliderAdditionsToday
           tz_id={items.location.tz_id}
           last_updated={items.current.last_updated}
           precip_mm={items.current.precip_mm}
@@ -92,6 +82,42 @@ export default function SliderSlick() {
           uv={items.current.uv}
           gust_mph={items.current.gust_mph}
         />
+      );
+    }
+    if (activeIndex === 2) {
+      slidersAdditionsRender = (
+        <SliderAdditionsTommorow
+          tz_id={items.location.tz_id}
+          last_updated={items.current.last_updated}
+          feelslike={tommorowDay.feelslike}
+          precipcover={tommorowDay.precipcover}
+          uvindex={tommorowDay.uvindex}
+          windspeed={tommorowDay.windspeed}
+        />
+      );
+    }
+    if (activeIndex === 3) {
+      slidersAdditionsRender = (
+        <SliderAdditionsWeek
+          tz_id={items.location.tz_id}
+        />
+      );
+    }
+  }
+
+  return (
+    <Slider
+      dots={settings.dots}
+      infinite={settings.infinite}
+      speed={settings.speed}
+      slidesToShow={settings.slidesToShow}
+      slidesToScroll={settings.slidesToScroll}
+    >
+      <div>
+        {slidersRender}
+      </div>
+      <div>
+        {slidersAdditionsRender}
       </div>
     </Slider>
   );

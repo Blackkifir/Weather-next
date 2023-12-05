@@ -1,5 +1,9 @@
 @import '../../scss/variables.module';
 
+.widjetsHidden {
+  display: none;
+}
+
 .footer_container {
   @include knock();
   overflow-y: hidden;
@@ -13,5 +17,5 @@
 }
 
 .hiddenFooter {
-  display: hidden;
+  display: none;
 }

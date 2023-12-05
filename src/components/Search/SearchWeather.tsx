@@ -15,7 +15,13 @@ export default function Search({ onChangeSearch, inputValue }: IPropsChangeInput
           src={...searchImg}
           alt="not-found"
         />
-        <input value={inputValue} onChange={onChangeSearch} type="search" placeholder="Search location..." />
+        <input
+          name="search"
+          value={inputValue}
+          onChange={onChangeSearch}
+          type="search"
+          placeholder="Search location..."
+        />
       </form>
     </div>
   );

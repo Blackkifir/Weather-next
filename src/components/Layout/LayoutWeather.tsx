@@ -21,7 +21,7 @@ export default function Main() {
   const {
     isloading,
   } = useAppSelector((state: RootState) => state.weatherSlice);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -31,14 +31,19 @@ export default function Main() {
     [dispatch],
   );
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(fetchWeekData(inputValue));
-  }, [dispatch, inputValue]);
+  const debounceChangeSecond = useCallback(
+    debounce((str: string) => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      dispatch(fetchWeekData(str));
+      dispatch(setLoading(false));
+    }, 3000),
+    [dispatch],
+  );
 
   useEffect(() => {
     debounceChangeInput(inputValue);
-  }, [debounceChangeInput, inputValue]);
+    debounceChangeSecond(inputValue);
+  }, [debounceChangeSecond, debounceChangeInput, inputValue]);
 
   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
