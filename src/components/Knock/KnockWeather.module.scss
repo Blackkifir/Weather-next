@@ -11,10 +11,9 @@
     position: relative;
     margin: 0px 10px 0px 10px;
     border-radius: 50px;
-    background: linear-gradient(to top left, rgba(11, 11, 11, 0.553) 20%, rgb(175, 66, 208));
     width: 92px;
-  
     height: 30px;
+    background: linear-gradient(to top left, rgba(11, 11, 11, 0.553) 20%, rgb(175, 66, 208));
 }
  
   &_switch {
@@ -29,28 +28,28 @@
     position: absolute;
     top: 2px;
     bottom: 2px;
+    transition: all .1000s;
+    transform: translateX(0px);
     border: none;
     border-radius: 50%;
     width: 25px;
     height: 25px;
     background-color: #151515;
     cursor: pointer;
-    transition: all .1000s;
-    transform: translateX(0px);
     }
   
   &_circleUnMoved {
     position: absolute;
     top: 2px;
     bottom: 2px;
+    transition: all .1000s;
+    transform: translateX(67px);
     border: none;
     border-radius: 50%;
     width: 25px;
     height: 25px;
     background-color: #151515;
     cursor: pointer;
-    transition: all .1000s;
-    transform: translateX(67px);
   }
 
     &_degrees {
