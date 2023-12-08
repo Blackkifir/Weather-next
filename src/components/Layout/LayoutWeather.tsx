@@ -3,12 +3,8 @@ import Head from 'next/head';
 
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
-import { fetchForecastData, setLoading } from '@/redux/slice/weatherSlice';
-import {
-  fetchWeekData,
-  setIsMovedTemp,
-  setKnockValue,
-} from '@/redux/slice/weekForecastSlice';
+import { fetchForecastData } from '@/redux/slice/weatherSlice';
+import { fetchWeekData, setIsMovedTemp, setKnockValue } from '@/redux/slice/weekForecastSlice';
 import { AppDispatch, RootState } from '@/redux/store';
 import { useAppSelector } from '../../redux/hooks/hooksW';
 
@@ -25,7 +21,6 @@ export default function Main() {
   const {
     isloading,
   } = useAppSelector((state: RootState) => state.weatherSlice);
-
   const { knockValue } = useAppSelector((state: RootState) => state.weekForecastSlice);
 
   const onIsClickTemp = () => {
@@ -42,7 +37,6 @@ export default function Main() {
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(fetchForecastData(str));
-      dispatch(setLoading(false));
     }, 3000),
     [],
   );
@@ -52,7 +46,6 @@ export default function Main() {
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(fetchWeekData(str));
-      dispatch(setLoading(false));
     }, 3000),
     [dispatch],
   );

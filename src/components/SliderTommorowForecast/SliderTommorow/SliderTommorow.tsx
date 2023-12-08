@@ -27,6 +27,13 @@ export default function SliderTommorow({
     return null;
   }
 
+  const tommorowList = [
+    { title: 'Humidity', proportions: humidity },
+    { title: 'Visibility', proportions: visibility },
+    { title: 'Air Pressure', proportions: pressure },
+    { title: 'Wind', proportions: windspeed },
+  ];
+
   return (
     <div>
       <div className={styles.parent}>
@@ -53,42 +60,15 @@ export default function SliderTommorow({
             <Image src={`https:${iconSlider}`} width={70} height={70} alt="cloudsImg" />
           </div>
           <div className={styles.blockBottom}>
-            <ul className={styles.blockBottom__list}>
-              <li className={styles.blockBottom__list__text}>Humidity</li>
-              <select name="selects" className={styles.blockBottom__list__selects}>
-                <option className={styles.blockBottom__list__proportions}>
-                  {humidity}
+            {tommorowList.map((obj) => (
+              <ul className={styles.blockBottom__list}>
+                <li className={styles.blockBottom__list__text}>{obj.title}</li>
+                <p className={styles.blockBottom__list__proportions}>
+                  {obj.proportions}
                   %
-                </option>
-              </select>
-            </ul>
-            <ul className={styles.blockBottom__list}>
-              <li className={styles.blockBottom__list__text}>Visibility</li>
-              <select name="selects" className={styles.blockBottom__list__selects}>
-                <option className={styles.blockBottom__list__proportions}>
-                  {visibility}
-                  km
-                </option>
-              </select>
-            </ul>
-            <ul className={styles.blockBottom__list}>
-              <li className={styles.blockBottom__list__text}>Air Pressure</li>
-              <select name="selects" className={styles.blockBottom__list__selects}>
-                <option className={styles.blockBottom__list__proportions}>
-                  {pressure}
-                  hpa
-                </option>
-              </select>
-            </ul>
-            <ul className={styles.blockBottom__list}>
-              <li className={styles.blockBottom__list__text}>Wind</li>
-              <select name="selects" className={styles.blockBottom__list__selects}>
-                <option className={styles.blockBottom__list__proportions}>
-                  {windspeed}
-                  kph
-                </option>
-              </select>
-            </ul>
+                </p>
+              </ul>
+            ))}
           </div>
         </div>
       </div>

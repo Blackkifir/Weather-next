@@ -31,7 +31,7 @@ const initialState: IPropsWeekData = {
     icon: '',
   },
   error: null,
-  isMovedTemp: false,
+  isMovedTemp: true,
   knockValue: false,
 };
 
