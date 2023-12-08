@@ -31,6 +31,8 @@ const initialState: IPropsWeekData = {
     icon: '',
   },
   error: null,
+  isMovedTemp: false,
+  knockValue: false,
 };
 
 export const fetchWeekData = createAsyncThunk(
@@ -38,7 +40,6 @@ export const fetchWeekData = createAsyncThunk(
   async (inputValue: string, { rejectWithValue }) => {
     const currentDate = moment().format('YYYY-MM-DD');
     const endDate = moment().add(7, 'days').format('YYYY-MM-DD');
-
     try {
       // eslint-disable-next-line max-len
       const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValue || 'Kyiv'}/${currentDate}/${endDate}?key=V2AN8FGDWJUTFNZ2A8CT6FW8B&unitGroup=metric`;
@@ -69,6 +70,12 @@ const weekForecastSlice = createSlice({
     setError(state, action: PayloadAction<Error | null>) {
       state.error = action.payload;
     },
+    setIsMovedTemp(state, action: PayloadAction<boolean>) {
+      state.isMovedTemp = action.payload;
+    },
+    setKnockValue(state, action: PayloadAction<boolean>) {
+      state.knockValue = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -82,5 +89,10 @@ const weekForecastSlice = createSlice({
   },
 });
 
-export const { setWeekItems, setError } = weekForecastSlice.actions;
+export const {
+  setWeekItems,
+  setError,
+  setIsMovedTemp,
+  setKnockValue,
+} = weekForecastSlice.actions;
 export default weekForecastSlice.reducer;

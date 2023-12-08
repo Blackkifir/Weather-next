@@ -7,7 +7,6 @@ const initialState: IPropsItemData = {
     current: {
       last_updated: '',
       temp_c: 0,
-      temp_f: 0,
       humidity: 0,
       pressure_mb: 0,
       wind_mph: 0,
@@ -27,23 +26,6 @@ const initialState: IPropsItemData = {
       forecastday: [
         {
           date: '',
-          day: {
-            avghumidity: 0,
-            avgtemp_c: 0,
-            avgvis_km: 0,
-            avgvis_miles: 0,
-            condition: {
-              icon: '',
-              text: '',
-            },
-            maxtemp_c: 0,
-            maxwind_kph: 0,
-            maxwind_mph: 0,
-            mintemp_c: 0,
-            totalprecip_in: 0,
-            totalprecip_mm: 0,
-            uv: 0,
-          },
           hour: [
             {
               time: '',

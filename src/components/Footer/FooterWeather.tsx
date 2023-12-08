@@ -11,7 +11,6 @@ export default function Footer() {
   const itemsIcon = items.forecast.forecastday[0].hour[0].condition;
 
   let content;
-
   if (!isloading) {
     if (activeIndex === 1) {
       content = items.forecast.forecastday[0].hour.map((obj) => (

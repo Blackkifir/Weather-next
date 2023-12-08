@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import moment from 'moment';
+import { useAppSelector } from '@/redux/hooks/hooksW';
+import { RootState } from '@/redux/store';
 import { IPropsWidgetsTommorow } from './interfaces/IPropsWidgetsTommorow';
 import styles from './WidgetsTommorow.module.scss';
 
@@ -9,6 +11,9 @@ export default function WidgetsTommorow({
   temp,
   conditions,
 }: IPropsWidgetsTommorow) {
+  const { knockValue } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const conversationFahrenheit = (celsius: number) => (Math.round(celsius) * 9) / 5 + 32;
+
   if (!icon) {
     return null;
   }
@@ -28,8 +33,8 @@ export default function WidgetsTommorow({
       </div>
       <div className={styles.flexBox_block_2}>
         <span className={styles.flexBox_text_2}>
-          {temp}
-          °C
+          {knockValue ? conversationFahrenheit(parseFloat(temp)) : temp}
+          °
         </span>
         <p className={styles.flexBox_desc}>{conditions}</p>
       </div>

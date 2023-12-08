@@ -1,10 +1,13 @@
 import Image from 'next/image';
 
+import { useAppSelector } from '@/redux/hooks/hooksW';
+import { RootState } from '@/redux/store';
+import { IPropsSliderTommorowAll } from './interfaces/IPropsSliderTommorow';
+
 import placeImg from '../../../icons/longLine.svg';
 import temperatureImg from '../../../icons/temperature.svg';
 
 import styles from './SliderTommorow.module.scss';
-import { IPropsSliderTommorowAll } from './interfaces/IPropsSliderTommorow';
 
 export default function SliderTommorow({
   nameAddress,
@@ -17,9 +20,13 @@ export default function SliderTommorow({
   temp,
   country,
 }: IPropsSliderTommorowAll) {
+  const { knockValue } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const conversationFahrenheit = (celsius: number) => (Math.round(celsius) * 9) / 5 + 32;
+
   if (!iconSlider) {
     return null;
   }
+
   return (
     <div>
       <div className={styles.parent}>
@@ -40,8 +47,8 @@ export default function SliderTommorow({
           <div className={styles.blockCenter}>
             <Image src={...temperatureImg} alt="temperatureImg" />
             <span className={styles.blockCenter__degrees}>
-              {temp}
-              °C
+              {knockValue ? conversationFahrenheit(temp) : temp}
+              °
             </span>
             <Image src={`https:${iconSlider}`} width={70} height={70} alt="cloudsImg" />
           </div>

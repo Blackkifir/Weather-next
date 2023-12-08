@@ -36,7 +36,7 @@ export default function SliderAdditionsTommorow({
               <p className={styles.leftBlock__block__item}>
                 <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
                 {feelslike}
-                °C
+                °
               </p>
             </div>
             <div className={styles.leftBlock__block}>

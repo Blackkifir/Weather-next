@@ -37,7 +37,7 @@ export default function SliderAdditionsWeek({ tz_id }: IPropsAdditionsWeek) {
                   <Image src={...temperatureAdditions} width={15} height={15} alt="temperatureImg" />
                   feelslike
                   {obj.feelslike}
-                  °C
+                  °
                 </p>
                 <p className={styles.slider__blockTable__text}>
                   <Image src={...windImg} width={15} height={15} alt="temperatureImg" />

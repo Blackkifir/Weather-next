@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { useAppSelector } from '@/redux/hooks/hooksW';
+import { RootState } from '@/redux/store';
 import { IPropsSliderMain } from './interfaces/IPropsSliderMain';
 import placeImg from '../../../icons/longLine.svg';
 import temperatureImg from '../../../icons/temperature.svg';
@@ -19,9 +21,13 @@ export default function SliderToday({
   wind_kph,
   icon,
 }: IPropsSliderMain) {
+  const { knockValue } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const conversationFahrenheit = (celsius: number) => (Math.round(celsius) * 9) / 5 + 32;
+
   if (!icon) {
     return null;
   }
+
   return (
     <div className={styles.parent}>
       <div className={styles.slider}>
@@ -41,8 +47,8 @@ export default function SliderToday({
         <div className={styles.blockCenter}>
           <Image src={...temperatureImg} alt="temperatureImg" />
           <span className={styles.blockCenter__degrees}>
-            {temp_c}
-            °C
+            {knockValue ? conversationFahrenheit(temp_c) : temp_c}
+            °
           </span>
           <Image src={`https:${icon}`} width={70} height={70} alt="cloudsImg" />
         </div>

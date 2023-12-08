@@ -35,7 +35,7 @@ export default function SliderAdditionsToday({
               <p className={styles.leftBlock__block__item}>
                 <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
                 {feelslike_c}
-                °C
+                °
               </p>
             </div>
             <div className={styles.leftBlock__block}>

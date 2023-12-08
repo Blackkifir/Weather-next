@@ -1,4 +1,6 @@
 import './globals.css';
+import './globals.scss';
+
 import Header from '@/components/Header/HeaderWeather';
 import Footer from '@/components/Footer/FooterWeather';
 import Main from '@/components/Layout/LayoutWeather';

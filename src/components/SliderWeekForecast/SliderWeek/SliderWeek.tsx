@@ -12,7 +12,8 @@ export default function SliderWeekForecast({
   country,
   name,
 }: IPropsWeekForecast) {
-  const { weekItems } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const { weekItems, knockValue } = useAppSelector((state: RootState) => state.weekForecastSlice);
+  const conversationFahrenheit = (celsius: number) => (Math.round(celsius) * 9) / 5 + 32;
   const weekForecast = weekItems.days;
   if (!icon) {
     return null;
@@ -37,8 +38,8 @@ export default function SliderWeekForecast({
                 <span className={styles.slider__blockTable__day}>{obj.datetime}</span>
                 <Image src={`http:${icon}`} width={25} height={25} alt="cloudsImg" />
                 <p className={styles.slider__blockTable__text}>
-                  {obj.temp}
-                  °C
+                  {knockValue ? conversationFahrenheit(obj.temp) : obj.temp}
+                  °
                 </p>
                 <p className={styles.slider__blockTable__text}>
                   {obj.humidity}
