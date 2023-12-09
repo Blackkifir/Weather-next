@@ -58,3 +58,68 @@
     }
 }
 
+
+@media (max-width: 1200px) {
+  .flexBox {
+  flex-wrap: wrap;
+   
+    .leftBlock {
+        width: 100%;
+        margin-bottom: 50px;
+      h1 {
+        font-size: 50px;
+        text-align: center;
+      }
+      
+      p {
+        float: none;
+        text-align: center;
+      }
+    }
+
+    ul {
+        @include flexBoxing();
+        width: 100%;
+        gap: 32px;
+        margin-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+   header {
+    padding-top: 50px;
+   }
+
+  .logo {
+    display: none;
+  }
+
+  .flexBox {
+    
+    ul {
+        button {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .flexBox {
+    .leftBlock {
+      h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+    }
+
+    ul {
+        @include gridCenter();
+        button {
+          font-size: 33px;
+        }
+        gap: 15px;
+    }
+  }
+}

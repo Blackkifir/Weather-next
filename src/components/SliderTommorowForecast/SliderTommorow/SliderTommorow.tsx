@@ -52,16 +52,22 @@ export default function SliderTommorow({
             </h4>
           </div>
           <div className={styles.blockCenter}>
-            <Image src={...temperatureImg} alt="temperatureImg" />
+            <Image src={...temperatureImg} className={styles.blockCenter__temperatureImg} alt="temperatureImg" />
             <span className={styles.blockCenter__degrees}>
               {knockValue ? conversationFahrenheit(temp) : temp}
               °
             </span>
-            <Image src={`https:${iconSlider}`} width={70} height={70} alt="cloudsImg" />
+            <Image
+              src={`https:${iconSlider}`}
+              width={70}
+              height={70}
+              className={styles.blockCenter__temperatureImg}
+              alt="cloudsImg"
+            />
           </div>
           <div className={styles.blockBottom}>
             {tommorowList.map((obj) => (
-              <ul className={styles.blockBottom__list}>
+              <ul key={obj.title} className={styles.blockBottom__list}>
                 <li className={styles.blockBottom__list__text}>{obj.title}</li>
                 <p className={styles.blockBottom__list__proportions}>
                   {obj.proportions}

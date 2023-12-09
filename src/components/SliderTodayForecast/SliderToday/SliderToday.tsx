@@ -45,12 +45,18 @@ export default function SliderToday({
           </h4>
         </div>
         <div className={styles.blockCenter}>
-          <Image src={...temperatureImg} alt="temperatureImg" />
+          <Image src={...temperatureImg} className={styles.blockCenter__temperatureImg} alt="temperatureImg" />
           <span className={styles.blockCenter__degrees}>
             {knockValue ? conversationFahrenheit(temp_c) : temp_c}
             °
           </span>
-          <Image src={`https:${icon}`} width={70} height={70} alt="cloudsImg" />
+          <Image
+            src={`https:${icon}`}
+            width={70}
+            height={70}
+            className={styles.blockCenter__cloudsImg}
+            alt="cloudsImg"
+          />
         </div>
         <div className={styles.blockBottom}>
           <ul className={styles.blockBottom__list}>

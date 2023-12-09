@@ -58,3 +58,91 @@
     border-bottom-left-radius: 20px;
   }
 }
+
+@media (max-width: 1000px) {
+  .slider {
+    width: 700px;
+  }
+}
+
+@media (max-width: 800px) {
+  .slider {
+    width: 630px;
+  }
+}
+
+@media (max-width: 700px) {
+  .slider {
+    width: 400px;
+    &__blockTable {
+      @include gridCenter();
+      grid-template-columns: 1fr 1fr 1fr;
+    
+    
+      &__day {
+        @include proportionsWeather();
+        white-space: nowrap;
+        margin-bottom: 7px;
+        text-decoration: underline;
+      }
+  
+      &__text {
+        margin-bottom: 7px;
+        font-size: 18px;
+        line-height: 15px;
+        font-weight: 300;
+        white-space: nowrap;
+      }
+
+      img {
+        margin-bottom: 7px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .slider {
+    width: 260px;
+    height: 1698px;
+    &__blockTop {
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        font-size: 20px;
+        line-height: 20px;
+      }
+
+      &__country,
+      &__city {
+        margin-bottom: 15px;
+      }
+    }
+
+    &__blockTable {
+      @include gridCenter();
+      grid-template-columns: 1fr;
+      height: 200px;
+    
+      &__day {
+        @include proportionsWeather();
+        white-space: nowrap;
+        margin-bottom: 7px;
+        text-decoration: underline;
+      }
+  
+      &__text {
+        margin-bottom: 7px;
+        font-size: 18px;
+        line-height: 15px;
+        font-weight: 300;
+        white-space: nowrap;
+      }
+
+      img {
+        margin-bottom: 7px;
+      }
+    }
+  }
+}

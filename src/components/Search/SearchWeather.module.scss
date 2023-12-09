@@ -27,6 +27,12 @@
         font-size: 25px;
         color: #695D5D;
 
+        input[type="search"]::-webkit-search-clear-button {
+          -webkit-appearance: none;
+          appearance: none;
+          display: none;
+        }
+
         &:hover {
           box-shadow: 0px 5px 5px rgba(150, 24, 172, 0.6);
           transition: all .3s;
@@ -40,3 +46,22 @@
       }
     }
   }
+
+@media (max-width: 600px) {
+  .search_flexBox {
+    form {
+      width: 100%;
+    
+      .search_img {
+        height: 25px;
+        width: 25px;
+      }
+
+      input {
+        height: 45px;
+        font-size: 20px;
+        padding-left: 70px;
+      }
+    }
+  }
+}
