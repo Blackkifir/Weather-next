@@ -38,7 +38,7 @@ export default function Footer() {
   }
 
   return (
-    <footer>
+    <footer className={styles.footer}>
       <div className={!isloading && activeIndex === 3 ? styles.widjetsHidden : ''}>
         <div className={!isloading ? styles.footer_container : styles.hiddenFooter}>
           {content}

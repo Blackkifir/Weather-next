@@ -22,7 +22,7 @@ export default function Header({ localtime }: IPropsHeader) {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       <Image src={logo} className={styles.logo} alt="logoImg" />
       <nav className={styles.navigation}>
         <div className={styles.flexBox}>
