@@ -36,7 +36,7 @@ export default function SliderWeekForecast({
             {weekForecast.map((obj) => (
               <div key={obj.datetime} className={styles.slider__blockTable}>
                 <span className={styles.slider__blockTable__day}>{obj.datetime}</span>
-                <Image src={`http:${icon}`} width={25} height={25} alt="cloudsImg" />
+                <Image src={`https:${icon}`} width={25} height={25} alt="cloudsImg" />
                 <p className={styles.slider__blockTable__text}>
                   {knockValue ? conversationFahrenheit(obj.temp) : obj.temp}
                   °

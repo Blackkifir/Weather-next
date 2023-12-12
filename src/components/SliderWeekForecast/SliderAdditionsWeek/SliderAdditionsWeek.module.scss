@@ -41,6 +41,10 @@
     border: 1px solid #FFFFFF;
     padding: 14px;
 
+    &__flexElements {
+      display: flex;
+    }
+
     &__block {
       display: flex;
       justify-content: space-between;

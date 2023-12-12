@@ -54,7 +54,7 @@ export default function SliderToday({
             °
           </span>
           <Image
-            src={`http:${icon}`}
+            src={`https:${icon}`}
             width={70}
             height={70}
             className={styles.blockCenter__cloudsImg}

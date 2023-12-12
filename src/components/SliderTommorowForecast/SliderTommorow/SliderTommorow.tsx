@@ -56,7 +56,7 @@ export default function SliderTommorow({
               °
             </span>
             <Image
-              src={`http:${iconSlider}`}
+              src={`https:${iconSlider}`}
               width={70}
               height={70}
               className={styles.blockCenter__temperatureImg}

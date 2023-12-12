@@ -24,7 +24,7 @@ export default function WidgetsToday({
       <div className={styles.flexBox_block_1}>
         <span className={styles.flexBox_text_1}>{timeStr}</span>
         <Image
-          src={`http:${icon}`}
+          src={`https:${icon}`}
           width={70}
           height={70}
           alt="widgetImg"

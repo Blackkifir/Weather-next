@@ -6,10 +6,6 @@ import { RootState } from '@/redux/store';
 import { IPropsAdditionsWeek } from './interfaces/IPropsAdditionsWeek';
 
 import weekImg from '../../../icons/week.ico';
-import temperatureAdditions from '../../../icons/temperatureAdditions.svg';
-import precipitationImg from '../../../icons/precipitation.svg';
-import windImg from '../../../icons/wind.svg';
-import uvIndex from '../../../icons/uvIndex.svg';
 
 import styles from './SliderAdditionsWeek.module.scss';
 
@@ -34,25 +30,21 @@ export default function SliderAdditionsWeek({ tz_id }: IPropsAdditionsWeek) {
               <div key={obj.datetime} className={styles.slider__blockTable}>
                 <span className={styles.slider__blockTable__day}>{obj.datetime}</span>
                 <p className={styles.slider__blockTable__text}>
-                  <Image src={...temperatureAdditions} width={15} height={15} alt="temperatureImg" />
-                  feelslike
+                  feelslike-
                   {obj.feelslike}
                   °
                 </p>
                 <p className={styles.slider__blockTable__text}>
-                  <Image src={...windImg} width={15} height={15} alt="temperatureImg" />
-                  wind
+                  wind-
                   {obj.windspeed}
                   kph
                 </p>
                 <p className={styles.slider__blockTable__text}>
-                  <Image src={...precipitationImg} width={15} height={15} alt="precipitationImg" />
-                  precipitation
+                  precipitation-
                   {obj.precipcover}
                   mm
                 </p>
                 <p className={styles.slider__blockTable__text}>
-                  <Image src={...uvIndex} width={15} height={15} alt="uvImg" />
                   uv-index-
                   {obj.uvindex}
                 </p>
