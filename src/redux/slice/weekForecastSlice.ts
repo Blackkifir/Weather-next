@@ -42,7 +42,7 @@ export const fetchWeekData = createAsyncThunk(
     const endDate = moment().add(7, 'days').format('YYYY-MM-DD');
     try {
       // eslint-disable-next-line max-len
-      const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValue || 'Kyiv'}/${currentDate}/${endDate}?key=V2AN8FGDWJUTFNZ2A8CT6FW8B&unitGroup=metric`;
+      const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputValue || 'Kyiv'}/${currentDate}/${endDate}?key=KPQ335WRPDKT2LUL45UNEG7M4&unitGroup=metric`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
