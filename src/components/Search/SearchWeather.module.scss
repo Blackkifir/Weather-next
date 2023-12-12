@@ -74,14 +74,13 @@
       width: 100%;
     
       .search_img {
-        height: 25px;
-        width: 25px;
+        display: none;
       }
 
       input {
         height: 45px;
         font-size: 20px;
-        padding-left: 70px;
+        padding-left: 20px;
       }
 
       .closeTarget {
