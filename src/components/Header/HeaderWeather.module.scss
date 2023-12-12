@@ -56,6 +56,12 @@
         transform: rotateY(10deg) scale(1.1);
         transition: all .3s;
     }
+
+    .active:disabled {
+      background-color: rgba(99, 98, 99, 0.6);
+      color: rgba(99, 98, 99, 0.6);
+      cursor: not-allowed;
+    }
 }
 
 
@@ -72,6 +78,8 @@
       }
       
       p {
+        font-size: 25px;
+        line-height: 20px;
         float: none;
         text-align: center;
       }

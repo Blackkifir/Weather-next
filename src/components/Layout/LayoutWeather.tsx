@@ -32,6 +32,10 @@ export default function Main() {
     dispatch(setKnockValue(!knockValue));
   };
 
+  const onClickClose = () => {
+    setInputValue('');
+  };
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
@@ -56,7 +60,12 @@ export default function Main() {
   }, [debounceChangeSecond, debounceChangeInput, inputValue]);
 
   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const manyStr = 'gigigigigigigigigigi';
+    if (inputValue.length >= manyStr.length) {
+      setInputValue('');
+    } else {
+      setInputValue(event.target.value);
+    }
   };
 
   return (
@@ -65,7 +74,11 @@ export default function Main() {
         <title>Weather</title>
       </Head>
       <Knock onIsClickTemp={onIsClickTemp} />
-      <Search inputValue={inputValue} onChangeSearch={onChangeSearch} />
+      <Search
+        inputValue={inputValue}
+        onClickClose={onClickClose}
+        onChangeSearch={onChangeSearch}
+      />
       {isloading ? <Loader /> : <SliderSlick />}
     </div>
   );

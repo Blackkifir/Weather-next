@@ -33,8 +33,8 @@ export default function SliderAdditionsTommorow({
               <p className={styles.leftBlock__block__text}>
                 How it feels
               </p>
+              <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
               <p className={styles.leftBlock__block__item}>
-                <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
                 {feelslike}
                 °
               </p>
@@ -43,8 +43,8 @@ export default function SliderAdditionsTommorow({
               <p className={styles.leftBlock__block__text}>
                 Wind speed
               </p>
+              <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
               <p className={styles.leftBlock__block__item}>
-                <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
                 {windspeed}
                 kph
               </p>
@@ -55,8 +55,8 @@ export default function SliderAdditionsTommorow({
               <p className={styles.rightBlock__block__text}>
                 Precipitation
               </p>
+              <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
               <p className={styles.rightBlock__block__item}>
-                <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
                 {precipcover}
                 mm
               </p>
@@ -65,8 +65,8 @@ export default function SliderAdditionsTommorow({
               <p className={styles.rightBlock__block__text}>
                 UV-index
               </p>
+              <Image src={...uvIndex} width={25} height={25} alt="uvImg" />
               <p className={styles.rightBlock__block__item}>
-                <Image src={...uvIndex} width={25} height={25} alt="uvImg" />
                 {uvindex}
               </p>
             </div>

@@ -24,7 +24,7 @@ export default function WidgetsTommorow({
       <div className={styles.flexBox_block_1}>
         <span className={styles.flexBox_text_1}>{timeStr}</span>
         <Image
-          src={`https:${icon}`}
+          src={`http:${icon}`}
           width={70}
           height={70}
           alt="widgetImg"

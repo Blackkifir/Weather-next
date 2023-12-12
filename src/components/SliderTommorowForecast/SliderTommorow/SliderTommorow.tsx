@@ -28,10 +28,10 @@ export default function SliderTommorow({
   }
 
   const tommorowList = [
-    { title: 'Humidity', proportions: humidity },
-    { title: 'Visibility', proportions: visibility },
-    { title: 'Air Pressure', proportions: pressure },
-    { title: 'Wind', proportions: windspeed },
+    { title: 'Humidity', proportions: `${humidity}%` },
+    { title: 'Visibility', proportions: `${visibility}km` },
+    { title: 'Air Pressure', proportions: `${pressure}hpa` },
+    { title: 'Wind', proportions: `${windspeed}kph` },
   ];
 
   return (
@@ -39,17 +39,15 @@ export default function SliderTommorow({
       <div className={styles.parent}>
         <div className={styles.slider}>
           <div className={styles.blockTop}>
-            <div>
+            <div className={styles.blockTop__flex}>
               <h3 className={styles.blockTop__title}>
                 {nameAddress}
-                <Image src={...placeImg} className={styles.placeImg} alt="not-found" />
+                /
+                {country}
               </h3>
-              <p className={styles.blockTop__date}>{dateDay}</p>
+              <Image src={...placeImg} className={styles.placeImg} alt="not-found" />
             </div>
-            <h4 className={styles.blockTop__country}>
-              {country}
-              <hr className={styles.underLine} />
-            </h4>
+            <p className={styles.blockTop__date}>{dateDay}</p>
           </div>
           <div className={styles.blockCenter}>
             <Image src={...temperatureImg} className={styles.blockCenter__temperatureImg} alt="temperatureImg" />
@@ -58,7 +56,7 @@ export default function SliderTommorow({
               °
             </span>
             <Image
-              src={`https:${iconSlider}`}
+              src={`http:${iconSlider}`}
               width={70}
               height={70}
               className={styles.blockCenter__temperatureImg}
@@ -71,7 +69,6 @@ export default function SliderTommorow({
                 <li className={styles.blockBottom__list__text}>{obj.title}</li>
                 <p className={styles.blockBottom__list__proportions}>
                   {obj.proportions}
-                  %
                 </p>
               </ul>
             ))}

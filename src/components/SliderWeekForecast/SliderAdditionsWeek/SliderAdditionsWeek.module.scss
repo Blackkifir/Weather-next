@@ -68,81 +68,62 @@
 @media (max-width: 1000px) {
   .slider {
     width: 700px;
-  }
-}
-
-
-@media (max-width: 800px) {
-  .slider {
-    width: 600px;
-    &__blockTable {
-      @include gridCenter();
-      grid-template-columns: 1fr 1fr 1fr;
-
-      &__day {
-        @include proportionsWeather();
-        margin-bottom: 7px;
-        white-space: nowrap;
-      }
   
-      &__text {
-        margin-bottom: 7px;
-        font-size: 18px;
-        line-height: 15px;
-        font-weight: 300;
-        white-space: nowrap;
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  .slider {
-    width: 400px;
-
-    &__blockTop {
-      display: flex;
-      flex-direction: column;
-
-      &__continent { 
-        margin-top: 10px;
-      }
-    }
-
     &__blockTable {
       @include gridCenter();
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
     }
   }
 }
 
-
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .slider {
-    width: 260px;
-    height: 1698px;
+    width: 500px;
 
     &__blockTop {
-      &__title {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .slider {
+    width: 265px;
+
+    &__blockTop {
+      &__title { 
         font-size: 15px;
         line-height: 15px;
       }
 
       &__continent {
-        margin-top: 10px;
-        margin-bottom: 2px;
+        font-size: 15px;
+        line-height: 15px;
       }
     }
 
     &__blockTable {
-      @include gridCenter();
       grid-template-columns: 1fr;
-      height: 200px;
-    }
-    &__blockTable:last-child {
-      border-bottom-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-      padding: 0px 0px 0px 0px;
+      grid-template-rows: 1fr;
+      
+      &__day {
+        font-size: 16px;
+        line-height: 16px;
+        white-space: nowrap;
+        margin-bottom: 10px;
+      }
+
+      &__text {
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 10px;
+      }
+
+      img {
+        height: 8px;
+        width: 8px;
+      }
     }
   }
 }

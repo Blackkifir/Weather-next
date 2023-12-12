@@ -6,7 +6,7 @@ import searchImg from '../../icons/search-location.svg';
 
 import styles from './SearchWeather.module.scss';
 
-export default function Search({ onChangeSearch, inputValue }: IPropsChangeInput) {
+export default function Search({ onChangeSearch, inputValue, onClickClose }: IPropsChangeInput) {
   return (
     <div className={styles.search_flexBox}>
       <form>
@@ -22,6 +22,13 @@ export default function Search({ onChangeSearch, inputValue }: IPropsChangeInput
           type="search"
           placeholder="Search location..."
         />
+        <button
+          type="button"
+          onClick={onClickClose}
+          className={inputValue ? styles.closeTarget : styles.noneCloseTarget}
+        >
+          &#10006;
+        </button>
       </form>
     </div>
   );

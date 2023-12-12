@@ -15,9 +15,7 @@ export default function SliderToday({
   temp_c,
   humidity,
   vis_km,
-  vis_miles,
   pressure_mb,
-  wind_mph,
   wind_kph,
   icon,
 }: IPropsSliderMain) {
@@ -28,21 +26,26 @@ export default function SliderToday({
     return null;
   }
 
+  const todayList = [
+    { title: 'Humidity', proportions: `${humidity}%` },
+    { title: 'Visibility', proportions: `${vis_km}km` },
+    { title: 'Air Pressure', proportions: `${pressure_mb}hpa` },
+    { title: 'Wind', proportions: `${wind_kph}kph` },
+  ];
+
   return (
     <div className={styles.parent}>
       <div className={styles.slider}>
         <div className={styles.blockTop}>
-          <div>
+          <div className={styles.blockTop__flex}>
             <h3 className={styles.blockTop__title}>
               {name}
-              <Image src={...placeImg} className={styles.placeImg} alt="not-found" />
+              /
+              {country}
             </h3>
-            <p className={styles.blockTop__date}>{localtime}</p>
+            <Image src={...placeImg} className={styles.placeImg} alt="not-found" />
           </div>
-          <h4 className={styles.blockTop__country}>
-            {country}
-            <hr className={styles.underLine} />
-          </h4>
+          <p className={styles.blockTop__date}>{localtime}</p>
         </div>
         <div className={styles.blockCenter}>
           <Image src={...temperatureImg} className={styles.blockCenter__temperatureImg} alt="temperatureImg" />
@@ -51,7 +54,7 @@ export default function SliderToday({
             °
           </span>
           <Image
-            src={`https:${icon}`}
+            src={`http:${icon}`}
             width={70}
             height={70}
             className={styles.blockCenter__cloudsImg}
@@ -59,50 +62,14 @@ export default function SliderToday({
           />
         </div>
         <div className={styles.blockBottom}>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Humidity</li>
-            <select name="selects" className={styles.blockBottom__list__selects}>
-              <option className={styles.blockBottom__list__proportions}>
-                {humidity}
-                %
-              </option>
-            </select>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Visibility</li>
-            <select name="selects" className={styles.blockBottom__list__selects}>
-              <option className={styles.blockBottom__list__proportions}>
-                {vis_km}
-                km
-              </option>
-              <option className={styles.blockBottom__list__proportions}>
-                {vis_miles}
-                miles
-              </option>
-            </select>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Air Pressure</li>
-            <select name="selects" className={styles.blockBottom__list__selects}>
-              <option className={styles.blockBottom__list__proportions}>
-                {pressure_mb}
-                hpa
-              </option>
-            </select>
-          </ul>
-          <ul className={styles.blockBottom__list}>
-            <li className={styles.blockBottom__list__text}>Wind</li>
-            <select name="selects" className={styles.blockBottom__list__selects}>
-              <option className={styles.blockBottom__list__proportions}>
-                {wind_mph}
-                mph
-              </option>
-              <option className={styles.blockBottom__list__proportions}>
-                {wind_kph}
-                kph
-              </option>
-            </select>
-          </ul>
+          {todayList.map((obj) => (
+            <ul key={obj.title} className={styles.blockBottom__list}>
+              <li className={styles.blockBottom__list__text}>{obj.title}</li>
+              <p className={styles.blockBottom__list__proportions}>
+                {obj.proportions}
+              </p>
+            </ul>
+          ))}
         </div>
       </div>
     </div>

@@ -32,8 +32,8 @@ export default function SliderAdditionsToday({
               <p className={styles.leftBlock__block__text}>
                 How it feels
               </p>
+              <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
               <p className={styles.leftBlock__block__item}>
-                <Image src={...temperatureAdditions} width={25} height={25} alt="temperatureImg" />
                 {feelslike_c}
                 °
               </p>
@@ -42,8 +42,8 @@ export default function SliderAdditionsToday({
               <p className={styles.leftBlock__block__text}>
                 Wind speed
               </p>
+              <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
               <p className={styles.leftBlock__block__item}>
-                <Image src={...windImg} width={25} height={25} alt="temperatureImg" />
                 {gust_mph}
                 kph
               </p>
@@ -54,8 +54,8 @@ export default function SliderAdditionsToday({
               <p className={styles.rightBlock__block__text}>
                 Precipitation
               </p>
+              <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
               <p className={styles.rightBlock__block__item}>
-                <Image src={...precipitationImg} width={25} height={20} alt="precipitationImg" />
                 {precip_mm}
                 mm
               </p>
@@ -64,8 +64,8 @@ export default function SliderAdditionsToday({
               <p className={styles.rightBlock__block__text}>
                 UV-index
               </p>
+              <Image src={...uvIndex} width={25} height={25} alt="temperatureImg" />
               <p className={styles.rightBlock__block__item}>
-                <Image src={...uvIndex} width={25} height={25} alt="temperatureImg" />
                 {uv}
               </p>
             </div>
