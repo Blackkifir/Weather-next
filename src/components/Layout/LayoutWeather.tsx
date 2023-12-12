@@ -36,13 +36,29 @@ export default function Main() {
     setInputValue('');
   };
 
+  const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const manyStr = 'gigigigigigigigigigi';
+    const currentInputValue = event.target.value;
+
+    if (currentInputValue && currentInputValue.length >= manyStr.length) {
+      setInputValue('');
+    } else {
+      setInputValue(currentInputValue);
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceChangeInput = useCallback(
     debounce((str: string) => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(fetchForecastData(str));
     }, 3000),
-    [],
+    [dispatch],
   );
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,15 +75,6 @@ export default function Main() {
     debounceChangeSecond(inputValue);
   }, [debounceChangeSecond, debounceChangeInput, inputValue]);
 
-  const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const manyStr = 'gigigigigigigigigigi';
-    if (inputValue.length >= manyStr.length) {
-      setInputValue('');
-    } else {
-      setInputValue(event.target.value);
-    }
-  };
-
   return (
     <div className={styles.main_container}>
       <Head>
@@ -76,6 +83,7 @@ export default function Main() {
       <Knock onIsClickTemp={onIsClickTemp} />
       <Search
         inputValue={inputValue}
+        handleKeyPress={handleKeyPress}
         onClickClose={onClickClose}
         onChangeSearch={onChangeSearch}
       />
